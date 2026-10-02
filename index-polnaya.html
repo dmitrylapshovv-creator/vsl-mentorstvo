@@ -825,6 +825,13 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
 .dm-side{display:flex;flex-direction:column;gap:22px;max-width:720px}
 .bubble{background:#fff;color:#111;border-radius:18px 18px 18px 4px;padding:20px 26px;font-size:24px;line-height:1.4;
   box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.slide--pod .chat-row .shot img{max-height:450px;max-width:none}
+.ten .c.taken{position:relative;color:rgba(239,237,235,.25);border-color:rgba(231,120,90,.55);background:rgba(231,120,90,.06)}
+.ten .c.taken::before,.ten .c.taken::after{content:"";position:absolute;left:12%;right:12%;top:50%;height:4px;
+  background:rgba(231,120,90,.95);border-radius:2px}
+.ten .c.taken::before{transform:rotate(45deg)}
+.ten .c.taken::after{transform:rotate(-45deg)}
+.seats-after{margin:14px 0 0;font-size:24px;line-height:1.45;color:rgba(239,237,235,.9);max-width:1200px}
 </style>
 </head>
 
@@ -1635,7 +1642,19 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   </section>
 
   <!-- ========================= 74 ========================= -->
-  <section class="slide" id="s74" aria-label="Слайд 74">
+  <section class="slide slide--chat slide--pod" id="s74" aria-label="Слайд 74">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <p class="eyebrow" data-step="1">Подкасты с моими учениками</p>
+      <h1 class="title-glow" data-step="1">Через год — <span class="gold">твой</span></h1>
+      <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/podkasty-youtube.jpg" alt="Подкасты с учениками на YouTube" loading="lazy"><figcaption>Подкасты с учениками на YouTube</figcaption></figure><figure class="shot" data-step="3"><img src="assets/podkast-shodka.jpg" alt="Сходка с учениками" loading="lazy"><figcaption>Сходка с учениками</figcaption></figure></div>
+      <p class="note" data-step="4">С тобой через год будет точно так же — если захочешь.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 75 ========================= -->
+  <section class="slide" id="s75" aria-label="Слайд 75">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1645,8 +1664,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 75 ========================= -->
-  <section class="slide slide--rv" id="s75" aria-label="Слайд 75">
+  <!-- ========================= 76 ========================= -->
+  <section class="slide slide--rv" id="s76" aria-label="Слайд 76">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1656,8 +1675,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 76 ========================= -->
-  <section class="slide" id="s76" aria-label="Слайд 76">
+  <!-- ========================= 77 ========================= -->
+  <section class="slide" id="s77" aria-label="Слайд 77">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1667,8 +1686,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div><div class="stamp" data-step="6">«У меня не получится» — не получится просто не может</div></div>
   </section>
 
-  <!-- ========================= 77 ========================= -->
-  <section class="slide" id="s77" aria-label="Слайд 77">
+  <!-- ========================= 78 ========================= -->
+  <section class="slide" id="s78" aria-label="Слайд 78">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-6.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1676,8 +1695,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 78 ========================= -->
-  <section class="slide" id="s78" aria-label="Слайд 78">
+  <!-- ========================= 79 ========================= -->
+  <section class="slide" id="s79" aria-label="Слайд 79">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1685,8 +1704,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 79 ========================= -->
-  <section class="slide slide--rv" id="s79" aria-label="Слайд 79">
+  <!-- ========================= 80 ========================= -->
+  <section class="slide slide--rv" id="s80" aria-label="Слайд 80">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1696,8 +1715,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 80 ========================= -->
-  <section class="slide" id="s80" aria-label="Слайд 80">
+  <!-- ========================= 81 ========================= -->
+  <section class="slide" id="s81" aria-label="Слайд 81">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-7.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1705,8 +1724,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 81 ========================= -->
-  <section class="slide slide--chat" id="s81" aria-label="Слайд 81">
+  <!-- ========================= 82 ========================= -->
+  <section class="slide slide--chat" id="s82" aria-label="Слайд 82">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1716,8 +1735,19 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 82 ========================= -->
-  <section class="slide slide--rv" id="s82" aria-label="Слайд 82">
+  <!-- ========================= 83 ========================= -->
+  <section class="slide" id="s83" aria-label="Слайд 83">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <p class="eyebrow" data-step="1">Кружок, который получает новый ученик</p>
+      <h1 class="title-glow" data-step="1">«Добро пожаловать. <span class="gold">Начинается год»</span></h1>
+      <div class="krug-row"><figure class="krug" data-step="2"><video class="slide-v" src="assets/krug-maksim-privetstvie.mp4" playsinline preload="none" poster="assets/posters/krug-maksim-privetstvie.jpg" controls></video><figcaption>«Теперь начинается год плотной, осознанной, взрослой работы над собой»</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 84 ========================= -->
+  <section class="slide slide--rv" id="s84" aria-label="Слайд 84">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1727,8 +1757,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 83 ========================= -->
-  <section class="slide slide--chat" id="s83" aria-label="Слайд 83">
+  <!-- ========================= 85 ========================= -->
+  <section class="slide slide--chat" id="s85" aria-label="Слайд 85">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1738,8 +1768,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 84 ========================= -->
-  <section class="slide slide--chat" id="s84" aria-label="Слайд 84">
+  <!-- ========================= 86 ========================= -->
+  <section class="slide slide--chat" id="s86" aria-label="Слайд 86">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1749,20 +1779,20 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 85 ========================= -->
-  <section class="slide" id="s85" aria-label="Слайд 85">
+  <!-- ========================= 87 ========================= -->
+  <section class="slide" id="s87" aria-label="Слайд 87">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">113 заявок прямо сейчас · для тех, кто досмотрел</p>
       <h1 class="title-glow" data-step="1">Десять <span class="gold">мест</span></h1>
-      <div class="ten"><div class="c" data-step="2">1</div><div class="c" data-step="2">2</div><div class="c" data-step="2">3</div><div class="c" data-step="2">4</div><div class="c" data-step="2">5</div><div class="c" data-step="2">6</div><div class="c" data-step="2">7</div><div class="c" data-step="2">8</div><div class="c" data-step="2">9</div><div class="c" data-step="2">10</div></div>
-      <p class="note" data-step="3">Я лично работаю с каждым. Больше — не вывезу.</p>
+      <div class="ten"><div class="c taken" data-step="3">1</div><div class="c taken" data-step="3">2</div><div class="c" data-step="2">3</div><div class="c" data-step="2">4</div><div class="c" data-step="2">5</div><div class="c" data-step="2">6</div><div class="c" data-step="2">7</div><div class="c" data-step="2">8</div><div class="c" data-step="2">9</div><div class="c" data-step="2">10</div></div>
+      <p class="note" data-step="4">Я лично работаю с каждым. Больше — не вывезу.</p><p class="seats-after" data-step="5">Два места уже заняты. Скорее всего, прямо сейчас мы отбираем следующего кандидата.</p><p class="seats-after" data-step="6">Если ты готов хоть на десять процентов, если есть внутренний отклик, — откладывать решение нет смысла. От тебя требуется очень простой шаг. О нём расскажу дальше.</p>
     </div></div>
   </section>
 
-  <!-- ========================= 86 ========================= -->
-  <section class="slide" id="s86" aria-label="Слайд 86">
+  <!-- ========================= 88 ========================= -->
+  <section class="slide" id="s88" aria-label="Слайд 88">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1772,8 +1802,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 87 ========================= -->
-  <section class="slide slide--offer" id="s87" aria-label="Слайд 87">
+  <!-- ========================= 89 ========================= -->
+  <section class="slide slide--offer" id="s89" aria-label="Слайд 89">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1785,8 +1815,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 88 ========================= -->
-  <section class="slide" id="s88" aria-label="Слайд 88">
+  <!-- ========================= 90 ========================= -->
+  <section class="slide" id="s90" aria-label="Слайд 90">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1796,8 +1826,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 89 ========================= -->
-  <section class="slide slide--wall" id="s89" aria-label="Слайд 89">
+  <!-- ========================= 91 ========================= -->
+  <section class="slide slide--wall" id="s91" aria-label="Слайд 91">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1808,8 +1838,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 90 ========================= -->
-  <section class="slide" id="s90" aria-label="Слайд 90">
+  <!-- ========================= 92 ========================= -->
+  <section class="slide" id="s92" aria-label="Слайд 92">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1817,8 +1847,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 91 ========================= -->
-  <section class="slide" id="s91" aria-label="Слайд 91">
+  <!-- ========================= 93 ========================= -->
+  <section class="slide" id="s93" aria-label="Слайд 93">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1826,8 +1856,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 92 ========================= -->
-  <section class="slide" id="s92" aria-label="Слайд 92">
+  <!-- ========================= 94 ========================= -->
+  <section class="slide" id="s94" aria-label="Слайд 94">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1837,8 +1867,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 93 ========================= -->
-  <section class="slide" id="s93" aria-label="Слайд 93">
+  <!-- ========================= 95 ========================= -->
+  <section class="slide" id="s95" aria-label="Слайд 95">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1846,8 +1876,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 94 ========================= -->
-  <section class="slide" id="s94" aria-label="Слайд 94">
+  <!-- ========================= 96 ========================= -->
+  <section class="slide" id="s96" aria-label="Слайд 96">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-8.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1857,8 +1887,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 95 ========================= -->
-  <section class="slide" id="s95" aria-label="Слайд 95">
+  <!-- ========================= 97 ========================= -->
+  <section class="slide" id="s97" aria-label="Слайд 97">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1866,8 +1896,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 96 ========================= -->
-  <section class="slide" id="s96" aria-label="Слайд 96">
+  <!-- ========================= 98 ========================= -->
+  <section class="slide" id="s98" aria-label="Слайд 98">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1877,8 +1907,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 97 ========================= -->
-  <section class="slide slide--case" id="s97" aria-label="Слайд 97">
+  <!-- ========================= 99 ========================= -->
+  <section class="slide slide--case" id="s99" aria-label="Слайд 99">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
@@ -1888,8 +1918,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 98 ========================= -->
-  <section class="slide" id="s98" aria-label="Слайд 98">
+  <!-- ========================= 100 ========================= -->
+  <section class="slide" id="s100" aria-label="Слайд 100">
     
     <div class="glow px" style="--d:0.22"></div>
     <div class="wrap"><div class="col col--map px" style="--d:0.45">
