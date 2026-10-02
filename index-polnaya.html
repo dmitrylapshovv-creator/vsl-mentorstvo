@@ -765,11 +765,11 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
 .vid-row.n2 .shot video,.vid-row.n3 .shot video{max-width:660px}
 .vid-row.n1 .shot video{max-height:560px}
 .rv-row{display:flex;gap:30px;justify-content:center;align-items:center;margin-top:26px;width:100%}
-.rv-row .shot img{max-height:690px;width:auto;height:auto;border-radius:14px;
+.rv-row .shot img{max-height:670px;width:auto;height:auto;border-radius:14px;
   box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(217,198,163,.25)}
 .rv-col{display:flex;flex-direction:column;gap:22px;align-items:center}
 .rv-row .rv-col .shot img{max-width:660px}
-.rv-col.c2 .shot img{width:460px;max-height:none}
+.rv-col.c2 .shot img{width:430px;max-height:none}
 .rv-col.c3 .shot img{width:500px;max-height:none}
 .rv-row.n2 .shot img{max-width:660px}
 .rv-row.n3 .shot img{max-width:440px}
@@ -820,6 +820,11 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
 .offer .arr{align-self:center;font-size:64px;color:var(--gold-300)}
 .cond{margin-top:26px;font-size:24px;color:rgba(239,237,235,.92)}
 .cond b{color:var(--gold-200);font-weight:600}
+.dm{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;margin-top:24px}
+.dm .shot img{max-height:640px;width:auto;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(217,198,163,.25)}
+.dm-side{display:flex;flex-direction:column;gap:22px;max-width:720px}
+.bubble{background:#fff;color:#111;border-radius:18px 18px 18px 4px;padding:20px 26px;font-size:24px;line-height:1.4;
+  box-shadow:0 18px 50px rgba(0,0,0,.5)}
 </style>
 </head>
 
@@ -842,7 +847,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s1" aria-label="Слайд 1">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Видео для своих</p>
       <h1 class="title-glow" data-step="1">Это видео попало к тебе<br><span class="gold">не просто так</span></h1>
       <p class="lead" data-step="2">В этом видео — конкретный способ поменять жизнь на «до» и «после». Его уже прошли мои ученики.</p>
@@ -853,7 +858,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s2" aria-label="Слайд 2">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Это видео не попадает тем,</p><p data-step="2">кому не суждено его смотреть.</p></div>
     </div></div>
   </section>
@@ -862,7 +867,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s3" aria-label="Слайд 3">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Конкретный способ</p>
       <h1 class="title-glow" data-step="1">До и <span class="gold">после</span></h1>
       <div class="pair n3"><figure class="shot" data-step="2"><img src="assets/photo-do-bassejn.jpg" alt="Тогда" loading="lazy"><figcaption>Тогда</figcaption></figure><figure class="shot" data-step="3"><img src="assets/photo-sejchas-zal.jpg" alt="Сейчас" loading="lazy"><figcaption>Сейчас</figcaption></figure><figure class="shot" data-step="4"><img src="assets/photo-sejchas-rubashka.jpg" alt="Сейчас" loading="lazy"><figcaption>Сейчас</figcaption></figure></div>
@@ -873,7 +878,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s4" aria-label="Слайд 4">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Как смотреть это видео</p>
       <h1 class="title-glow" data-step="1">Не как <span class="gold">серию сериала</span></h1>
       <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">Возьми блокнот и ручку — будешь записывать. Телефон экраном вниз</li><li data-step="3" style="font-size:24px">Ты привык смотреть видео фоном, между делами. Выдели двадцать пять минут — от начала и до конца</li><li data-step="4" style="font-size:24px">Будешь смотреть хуй пойми как — и жизнь будет хуй пойми как</li><li data-step="5" style="font-size:24px">От того, как ты посмотришь это видео, зависит вся твоя жизнь. И это нихуя не шутка</li></ul>
@@ -884,7 +889,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--wall" id="s5" aria-label="Слайд 5">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="wall-grid" data-step="1"><img src="assets/private/wall/p013.jpg" alt="" loading="lazy"><img src="assets/private/wall/s002.jpg" alt="" loading="lazy"><img src="assets/private/wall/p021.jpg" alt="" loading="lazy"><img src="assets/private/wall/s003.jpg" alt="" loading="lazy"><img src="assets/private/wall/p023.jpg" alt="" loading="lazy"><img src="assets/private/wall/s004.jpg" alt="" loading="lazy"><img src="assets/private/wall/p027.jpg" alt="" loading="lazy"><img src="assets/private/wall/s005.jpg" alt="" loading="lazy"><img src="assets/private/wall/p028.jpg" alt="" loading="lazy"><img src="assets/private/wall/s006.jpg" alt="" loading="lazy"><img src="assets/private/wall/p029.jpg" alt="" loading="lazy"><img src="assets/private/wall/s007.jpg" alt="" loading="lazy"><img src="assets/private/wall/p030.jpg" alt="" loading="lazy"><img src="assets/private/wall/s008.jpg" alt="" loading="lazy"><img src="assets/private/wall/p031.jpg" alt="" loading="lazy"><img src="assets/private/wall/s009.jpg" alt="" loading="lazy"><img src="assets/private/wall/p032.jpg" alt="" loading="lazy"><img src="assets/private/wall/s010.jpg" alt="" loading="lazy"><img src="assets/private/wall/p041.jpg" alt="" loading="lazy"><img src="assets/private/wall/s011.jpg" alt="" loading="lazy"><img src="assets/private/wall/p042.jpg" alt="" loading="lazy"><img src="assets/private/wall/s012.jpg" alt="" loading="lazy"><img src="assets/private/wall/p045.jpg" alt="" loading="lazy"><img src="assets/private/wall/s014.jpg" alt="" loading="lazy"></div>
       <div class="wall-txt">      <p class="eyebrow" data-step="2">Смотри моих учеников</p>
       <h1 class="title-glow" data-step="2">Я кратно повышаю <span class="gold">твои шансы</span></h1>
@@ -896,7 +901,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s6" aria-label="Слайд 6">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Пишут сами · без правок</p>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/36-let.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/10k-2-mes.jpg" alt="Скриншот" loading="lazy"></figure></div>
     </div></div>
@@ -906,7 +911,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s7" aria-label="Слайд 7">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Два варианта</p>
       <h1 class="title-glow" data-step="1">Выбираешь <span class="gold">ты</span></h1>
       <div class="two-col"><div class="card" data-step="2"><h3>Выключишь</h3><p>Так же без денег — «кому-то везёт»</p><p>Так же будешь бояться женщин</p><p>Так же будешь сравнивать себя с другими и думать, что ты какой-то не такой</p></div><div class="card" data-step="3"><h3>Досмотришь</h3><p>Найдёшь ответы, которые искал всю жизнь</p><p>Как за год, даже за полгода, кардинально поменять реальность</p><p>Как соблазнять топовых девушек, зарабатывать больше и быть в самом пиздатом окружении</p></div></div>
@@ -917,7 +922,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s8" aria-label="Слайд 8">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Глава 1 · Это видео не попадает к женщинам. Ты мужчина</p>
       <h1 class="title-glow" data-step="1">Три <span class="gold">столба</span></h1>
       <div class="three-col"><div class="card" data-step="2"><h3>Реализация</h3><p>«Богатые — плохие», «ошибаться — плохо»</p><p>Боишься денег и своего дела</p></div><div class="card" data-step="3"><h3>Уверенность</h3><p>«Не высовывайся, будь как все»</p><p>Славный парень, который боится сказать «нет»</p></div><div class="card" data-step="4"><h3>Женщины</h3><p>Учили быть удобным мужем, а не желанным</p><p>Френдзона, игнор, тебя используют</p></div></div>
@@ -929,7 +934,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s9" aria-label="Слайд 9">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Тебя всю жизнь готовили</p><p data-step="2">быть худшим из худших.</p></div>
     </div></div>
   </section>
@@ -938,7 +943,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s10" aria-label="Слайд 10">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Столб первый</p>
       <h1 class="title-glow" data-step="1">Реализация</h1>
       <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">«Богатые — плохие»</li><li data-step="3" style="font-size:24px">«Ошибаться — плохо»</li><li data-step="4" style="font-size:24px">Боишься открыть своё дело</li><li data-step="5" style="font-size:24px">Тебе тридцать — и ты боишься денег, прогибаешься перед начальником или даже не пробуешь</li></ul>
@@ -949,7 +954,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s11" aria-label="Слайд 11">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Столб второй</p>
       <h1 class="title-glow" data-step="1">Уверенность</h1>
       <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">«Не высовывайся. Будь как все»</li><li data-step="3" style="font-size:24px">Вина и стыд с детства</li><li data-step="4" style="font-size:24px">Славный парень, который боится сказать «нет»</li><li data-step="5" style="font-size:24px">Окружение такое же — и кажется, что так и надо</li></ul>
@@ -960,7 +965,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s12" aria-label="Слайд 12">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Столб третий</p>
       <h1 class="title-glow" data-step="1">Женщины</h1>
       <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">Френдзонят, игнорят или просто используют</li><li data-step="3" style="font-size:24px">Учили быть удобным мужем, а не желанным</li><li data-step="4" style="font-size:24px">Закрывать хотелки, дарить цветочки, признаваться в чувствах</li></ul>
@@ -971,7 +976,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s13" aria-label="Слайд 13">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Разве это дало тебе секс? Нет.</p><p data-step="2">Разве это дало тебе счастье? Нет.</p></div>
     </div></div>
   </section>
@@ -980,7 +985,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s14" aria-label="Слайд 14">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Мне было девятнадцать</p>
       <h1 class="title-glow" data-step="1">Всё, к чему меня готовил мир, — <span class="gold">не то</span></h1>
       <div class="case-row past"><figure class="shot" data-step="2"><img src="assets/past-19-let.jpg" alt="Тогда" loading="lazy"><figcaption>Тогда</figcaption></figure><div class="case-txt"><p data-step="3">Тридцать квадратов, без штор и без кондиционера</p><p data-step="4">Чтобы заснуть в жару, мочил простыню</p></div></div>
@@ -991,7 +996,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s15" aria-label="Слайд 15">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Делаем прямо сейчас</p>
       <p class="do-q title-glow" data-step="1">Оцени себя по трём столбам<br>от одного до десяти</p>
       <div class="do-sub"><span data-step="2">Реализация · Уверенность · Женщины</span><span data-step="3">Запиши три цифры — они понадобятся</span></div>
@@ -1002,7 +1007,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s16" aria-label="Слайд 16">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">А как ты хочешь жить?</p>
       <h1 class="title-glow" data-step="1">Подумай <span class="gold">честно</span></h1>
       <figure class="shot shot--strip" data-step="2"><img src="assets/photo-god.jpg" alt="Кадры года"></figure>
@@ -1014,7 +1019,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s17" aria-label="Слайд 17">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-1.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Признайся себе:</p><p data-step="2">тебя наебали.</p><p data-step="3">И так больше продолжаться не может.</p></div>
     </div></div>
   </section>
@@ -1023,7 +1028,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s18" aria-label="Слайд 18">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Отзывы учеников</p>
       <h1 class="title-glow" data-step="1">За месяц больше, <span class="gold">чем за всю жизнь</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/6-devushek.jpg" alt="Скриншот" loading="lazy"></figure><div class="rv-col c3"><figure class="shot" data-step="3"><img src="assets/private/rv/pyat-raz.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/ded-tvorit.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/krossy.jpg" alt="Скриншот" loading="lazy"></figure></div></div>
@@ -1034,7 +1039,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s19" aria-label="Слайд 19">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Я был по ту сторону</p>
       <h1 class="title-glow" data-step="1">Та <span class="gold">сторона</span></h1>
       <div class="case-row past"><figure class="shot" data-step="2"><img src="assets/past-ta-storona.jpg" alt="Тогда" loading="lazy"><figcaption>Тогда</figcaption></figure><div class="case-txt"><p data-step="3">Сто килограммов</p><p data-step="4">Долгов — полтора миллиона</p><p data-step="5">Бизнес потерян</p><p data-step="6">Три года без спорта</p><p data-step="7">Боялся конфликтов, запустил себя</p><p data-step="8">Это не жизнь, а выживание. День сурка. Ты мышь, а не лев</p></div></div>
@@ -1045,7 +1050,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s20" aria-label="Слайд 20">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Это не жизнь. Это выживание.</p><p data-step="2">День сурка.</p><p data-step="3">Ты мышь, а не лев.</p></div>
     </div></div>
   </section>
@@ -1054,7 +1059,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s21" aria-label="Слайд 21">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Я точно знаю</p>
       <h1 class="title-glow" data-step="1">Любой парень может прийти<br>из этой точки <span class="gold">в эту</span></h1>
       <p class="lead" data-step="2">При должном количестве действий. При наставнике рядом. При понимании, что хочешь всё поменять.</p>
@@ -1065,7 +1070,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s22" aria-label="Слайд 22">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Делаем прямо сейчас</p>
       <p class="do-q title-glow" data-step="1">Не понимаешь, что хочешь всё поменять?<br>Выпиши пятьдесят причин</p>
       <div class="do-sub"><span data-step="2">Конкретно, по пунктам</span></div>
@@ -1076,7 +1081,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s23" aria-label="Слайд 23">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Лицом в реальность</p>
       <h1 class="title-glow" data-step="1">Давай <span class="gold">по фактам</span></h1>
       <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">Девушка, которая тебе нравится, рядом с тобой сейчас даже не села бы</li><li data-step="3" style="font-size:24px">На машину мечты придётся работать пятьдесят лет, живя в съёмной</li><li data-step="4" style="font-size:24px">Окружению, которое ты хочешь, ты сейчас не нужен</li><li data-step="5" style="font-size:24px">Хочешь деньги с бизнеса — а боишься даже подумать о бизнесе</li><li data-step="6" style="font-size:24px">Сколько согласились на первой встрече? Сколько ты зарабатываешь? С кем живёшь?</li></ul>
@@ -1087,7 +1092,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s24" aria-label="Слайд 24">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Я не хочу тебя унизить.</p><p data-step="2">Я хочу, чтобы ты признал: ты ничего не знаешь.</p></div>
     </div></div>
   </section>
@@ -1096,7 +1101,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s25" aria-label="Слайд 25">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Я не хочу тебя унизить. Я хочу, чтобы ты признал: ты ничего не знаешь.</p><p data-step="2">Всему миру выгодно, чтобы ты был удобным и послушным.</p><p data-step="3">Таким проще управлять. Таким проще командовать.</p><p data-step="4">Ты этого хочешь?</p></div>
     </div></div>
   </section>
@@ -1105,7 +1110,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s26" aria-label="Слайд 26">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-2.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Сейчас расскажу конкретно,</p><p data-step="2">как ты за один год проживёшь лучше,</p><p data-step="3">чем за все свои двадцать пять–тридцать лет.</p></div>
     </div></div>
   </section>
@@ -1114,7 +1119,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s27" aria-label="Слайд 27">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кто я</p>
       <h1 class="title-glow" data-step="1">Независимо от того, сколько <span class="gold">ты меня знаешь</span></h1>
       <div class="case-row"><figure class="shot" data-step="2"><img src="assets/private/getcourse-vyruchka-2026.png" alt="GetCourse · принятые платежи с 1 января 2026" loading="lazy"><figcaption>GetCourse · принятые платежи с 1 января 2026</figcaption></figure><div class="case-txt"><p data-step="3">400 женщин</p><p data-step="4">Более 12 миллионов за год — легально</p><p data-step="5">Более 12 путешествий</p><p data-step="6">Без вредных привычек</p><p data-step="7">Классные отношения, окружение, свободный образ жизни</p></div></div>
@@ -1125,7 +1130,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s28" aria-label="Слайд 28">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Как это выглядит</p>
       <h1 class="title-glow" data-step="1">Эта <span class="gold">жизнь</span></h1>
       <div class="vid-row n2"><figure class="shot" data-step="2"><video class="slide-v" src="assets/vid-put-1.mp4" playsinline preload="none" poster="assets/posters/vid-put-1.jpg" controls></video><figcaption>Полёт над заливом</figcaption></figure><figure class="shot" data-step="3"><video class="slide-v" src="assets/vid-put-2.mp4" playsinline preload="none" poster="assets/posters/vid-put-2.jpg" controls></video><figcaption>Горы</figcaption></figure></div>
@@ -1136,7 +1141,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s29" aria-label="Слайд 29">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">С группой</p>
       <h1 class="title-glow" data-step="1">Бодрум</h1>
       <div class="krug-row"><figure class="krug" data-step="2"><video class="slide-v" src="assets/krug-bodrum-1.mp4" playsinline preload="none" poster="assets/posters/krug-bodrum-1.jpg" controls></video><figcaption>В дороге</figcaption></figure><figure class="krug" data-step="3"><video class="slide-v" src="assets/krug-bodrum-3.mp4" playsinline preload="none" poster="assets/posters/krug-bodrum-3.jpg" controls></video><figcaption>На месте</figcaption></figure><figure class="krug" data-step="4"><video class="slide-v" src="assets/krug-bodrum-4.mp4" playsinline preload="none" poster="assets/posters/krug-bodrum-4.jpg" controls></video><figcaption>Вместе</figcaption></figure></div>
@@ -1147,7 +1152,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s30" aria-label="Слайд 30">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Все, кто рядом, растут</p>
       <h1 class="title-glow" data-step="1">Кто-то купил <span class="gold">дом</span>, кто-то — машину</h1>
       <div class="pair n3"><figure class="shot" data-step="2"><img src="assets/case-ibragim.jpg" alt="Дом и отношения" loading="lazy"><figcaption>Дом и отношения</figcaption></figure><figure class="shot" data-step="3"><img src="assets/shot-otzyv-kirill.jpg" alt="Девушки пишут сами" loading="lazy"><figcaption>Девушки пишут сами</figcaption></figure><figure class="shot" data-step="4"><img src="assets/shot-otzyv-artem.jpg" alt="Новая жизнь" loading="lazy"><figcaption>Новая жизнь</figcaption></figure></div>
@@ -1158,7 +1163,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s31" aria-label="Слайд 31">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Хочу тебе представить</p>
       <h1 class="title-glow" data-step="1">Саня</h1>
       <div class="sasha"><div class="case-txt"><p data-step="2">Сначала был моим подписчиком</p><p data-step="3">Проходил курсы, потом марафон</p><p data-step="4">В январе 2026-го пишет: «Макс, хочу на менторство. Хочу за год поменять себе жизнь»</p></div><div class="case-txt why"><p data-step="5">Почему я его взял? Набор тогда был очень ограничен</p><p data-step="6">Он показал мне огромные распечатки моих диалогов. Конспекты</p><p data-step="7">Парень конспектировал диалоги, выписывал каждую фишку — и применял</p></div></div>
@@ -1169,7 +1174,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s32" aria-label="Слайд 32">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Был подписчиком — стал куратором</p>
       <h1 class="title-glow" data-step="1">Саша: <span class="gold">миллион за два месяца</span></h1>
       <div class="vid-row n1"><figure class="shot" data-step="2"><video class="slide-v" src="assets/otzyv-sanya-million.mp4" playsinline preload="none" poster="assets/posters/otzyv-sanya-million.jpg" controls></video><figcaption>«Я за два месяца на миллион продал»</figcaption></figure></div>
@@ -1180,7 +1185,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s33" aria-label="Слайд 33">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-3.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Мой главный продукт</p>
       <h1 class="title-glow" data-step="1"><span class="gold">Менторство</span></h1>
       <p class="lead" data-step="2">Если ты будешь на менторстве — ты счастливчик.</p>
@@ -1191,7 +1196,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s34" aria-label="Слайд 34">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Мой продукт — Rolls-Royce</p><p data-step="2">в мире менторинга.</p><p data-step="3">За свой продукт я отвечаю.</p></div>
     </div></div>
   </section>
@@ -1200,7 +1205,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s35" aria-label="Слайд 35">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Про эфиры</p>
       <h1 class="title-glow" data-step="1">Посмотрел на жизнь <span class="gold">под другим углом</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/finansy.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/efiry-podacha.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1211,7 +1216,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s36" aria-label="Слайд 36">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Что ты получаешь</p>
       <h1 class="title-glow" data-step="1">Год <span class="gold">со мной</span></h1>
       <p class="lead" data-step="2">Каждый пункт — с примером ученика.</p>
@@ -1222,7 +1227,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s37" aria-label="Слайд 37">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">1 · Личное крыло</p>
       <h1 class="title-glow" data-step="1">Вводный <span class="gold">созвон</span></h1>
       <p class="why-line" data-step="1">тебя готовили к чужой жизни. Свою цель ты ни разу не выбирал</p>
@@ -1234,7 +1239,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s38" aria-label="Слайд 38">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кейс</p>
       <h1 class="title-glow" data-step="1">Артём: цель оказалась <span class="gold">чужой</span></h1>
       <div class="voice-wrap"><figure class="voice" data-step="2"><audio class="slide-a" src="assets/audio-artem.m4a" preload="metadata" controls></audio><figcaption>Голосовое Артёма · 32 секунды</figcaption></figure><div class="case-txt"><p data-step="3">После армии работал в такси</p><p data-step="4">Хотел в Таиланд — работа туда не вела</p><p data-step="5">На вводном созвоне нашли его цель</p><p data-step="6">Пошли деньги и девушки</p></div></div>
@@ -1245,7 +1250,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s39" aria-label="Слайд 39">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">2 · Я на связи 24/7</p>
       <h1 class="title-glow" data-step="1">Личный канал <span class="gold">с твоим именем</span></h1>
       <div class="pair n2"><figure class="shot" data-step="2"><img src="assets/shot-kanal-imya.jpg" alt="Канал ученика" loading="lazy"><figcaption>Канал ученика</figcaption></figure><figure class="shot" data-step="3"><img src="assets/shot-kanal.jpg" alt="Отчёт за день" loading="lazy"><figcaption>Отчёт за день</figcaption></figure></div>
@@ -1256,7 +1261,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s40" aria-label="Слайд 40">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">2 · Я на связи 24/7 · личный чат со мной</p>
       <h1 class="title-glow" data-step="1">Пишешь — <span class="gold">я отвечаю</span></h1>
       <p class="why-line" data-step="1">сам ты за год, два и три ничего не поменял</p>
@@ -1268,7 +1273,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s41" aria-label="Слайд 41">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Послушай, как я отвечаю</p>
       <h1 class="title-glow" data-step="1">Голосовое <span class="gold">ученику</span></h1>
       <div class="voice-shot"><figure class="shot" data-step="2"><img src="assets/private/lichno-01.png" alt="Скриншот" loading="lazy"></figure><div><figure class="voice" data-step="2"><audio class="slide-a" src="assets/audio-maksim-uchenik.m4a" preload="metadata" controls></audio><figcaption>Голосовое ученику · 1:12</figcaption></figure><div class="case-txt"><p data-step="3">Поначалу пиши по одному скелету</p><p data-step="4">Задача — набить опыт свиданий</p><p data-step="5">Потом приходят опыт и уверенность</p><p data-step="6">И пропадает страх накосячить</p></div></div></div>
@@ -1279,7 +1284,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s42" aria-label="Слайд 42">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">После созвона и встречи со мной</p>
       <h1 class="title-glow" data-step="1">Вживую — <span class="gold">другие ощущения</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/sozvon-noch.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/vstrecha.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1290,7 +1295,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s43" aria-label="Слайд 43">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">3 · Чат</p>
       <h1 class="title-glow" data-step="1">Комьюнити лучших мужчин СНГ, <span class="gold">которые каждый день работают над своими целями</span></h1>
       <p class="why-line" data-step="1">твоё окружение такое же, как ты, и считает это нормой</p>
@@ -1302,7 +1307,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s44" aria-label="Слайд 44">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Каждый день парни помогают друг другу</p>
       <h1 class="title-glow" data-step="1">«Всей оравой <span class="gold">поможем»</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-03.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/chat-04.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-05.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1313,7 +1318,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s45" aria-label="Слайд 45">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Новичка встречают</p>
       <h1 class="title-glow" data-step="1">«Ты в лучшем <span class="gold">месте»</span></h1>
       <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/private/chat-01.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/chat-02.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1324,7 +1329,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s46" aria-label="Слайд 46">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Представь: всё максимально хуёво, и высказаться некому</p>
       <h1 class="title-glow" data-step="1">А рядом двадцать <span class="gold">заряженных парней</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-06.png" alt="«2 недели не курю»" loading="lazy"><figcaption>«2 недели не курю»</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-07.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-08.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1336,7 +1341,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s47" aria-label="Слайд 47">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кто на потоке</p>
       <h1 class="title-glow" data-step="1">Это твой <span class="gold">социальный лифт</span></h1>
       <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/photo-krug-group.jpg" alt="Встреча группы" loading="lazy"><figcaption>Встреча группы</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-21.png" alt="Домашка ученика" loading="lazy"><figcaption>Домашка ученика</figcaption></figure></div>
@@ -1347,7 +1352,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s48" aria-label="Слайд 48">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">4 · Вся база сразу</p>
       <h1 class="title-glow" data-step="1">Открывается <span class="gold">в первый день</span></h1>
       <p class="why-line" data-step="1">не за десять лет, а за год</p>
@@ -1360,7 +1365,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s49" aria-label="Слайд 49">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Канал менторства · открывается в первый день</p>
       <h1 class="title-glow" data-step="1">Всё накопленное — <span class="gold">сразу твоё</span></h1>
       <div class="stats"><div class="stat" data-step="2"><span class="n">1 206</span><span class="l">постов и материалов</span></div><div class="stat" data-step="3"><span class="n">72</span><span class="l">часа видео, из них 46 записей эфиров</span></div><div class="stat" data-step="4"><span class="n">204</span><span class="l">больших поста: разборы, статьи, инструкции</span></div><div class="stat" data-step="5"><span class="n">87</span><span class="l">голосовых и кружков — почти 10 часов</span></div><div class="stat" data-step="6"><span class="n">888</span><span class="l">фото и скринов: диалоги, примеры</span></div></div>
@@ -1372,7 +1377,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--topics" id="s50" aria-label="Слайд 50">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Канал менторства · что внутри</p>
       <h1 class="title-glow" data-step="1">Это только <span class="gold">заголовки</span></h1>
       <div class="topics"><div class="topic" data-step="2">НЕОЧЕВИДНАЯ ПРИВЫЧКА, ИЗ-ЗА КОТОРОЙ ОНА ТЕРЯЕТ К ТЕБЕ ВЛЕЧЕНИЕ</div><div class="topic" data-step="2">ЗАПИСЬ ЭФИРА «ПСИХОЛОГИЯ ПОБЕДИТЕЛЯ»</div><div class="topic" data-step="2">РАЗБОР ДИАЛОГА ОТ ЗНАКОМСТВА ДО СЕКСА</div><div class="topic" data-step="2">КАК СОБЛАЗНЯТЬ ДЕВУШЕК В КЛУБЕ / НА ОТДЫХЕ?</div><div class="topic" data-step="2">УБЕЖДЕНИЯ В СОБЛАЗНЕНИИ</div><div class="topic" data-step="2">КАК НАЧАТЬ ХОДИТЬ НА СВИДАНИЯ? ИНСТРУКЦИЯ ДЛЯ НОВИЧКА</div><div class="topic" data-step="2">КАК НАСЫТИТЬ ДЛИТЕЛЬНЫЕ ОТНОШЕНИЯ И НЕ ПРОЕБАТЬ ПРИГОДНУЮ ДЕВУШКУ?</div><div class="topic" data-step="2">ХВАТИТ БЫТЬ ЕБАНОЙ ЖЕРТВОЙ. НАХУЙ ТЫ ЭТО ТЕРПИШЬ?</div><div class="topic" data-step="2">ИМЕННО ЭТИ ПРИВЫЧКИ РАЗРУШАЮТ ТЕБЯ КАК МУЖЧИНУ</div><div class="topic" data-step="2">ПОЧЕМУ 90% ДЕВУШЕК НЕ «ЛЮБЯТ» БАБНИКОВ?</div><div class="topic" data-step="2">ТРИГГЕРЫ ВЛЕЧЕНИЯ</div><div class="topic" data-step="2">ЧТО ДЕЛАТЬ, ЕСЛИ У ТВОЕЙ ЛЮБИМКИ ЕСТЬ «ДРУГ»?</div><div class="topic" data-step="3">КАК УЛУЧШИТЬ СВОЮ КОНВЕРСИЮ НА ПЕРВОМ СВИДАНИИ?</div><div class="topic" data-step="3">ТО, БЕЗ ЧЕГО ТЫ НЕ СТАНЕШЬ УСПЕШНЫМ: ВИДЕНИЕ</div><div class="topic" data-step="3">КАК НАЙТИ ПРИГОДНУЮ ЖЕНЩИНУ?</div><div class="topic" data-step="3">НЕ НОСИ ЭТИ ВЕЩИ, ЕСЛИ ХОЧЕШЬ ЕБАТЬ ЖЕНЩИН!</div><div class="topic" data-step="3">КАК Я ТРАЧУ ДЕНЬГИ?</div><div class="topic" data-step="3">КАК ПОЗНАКОМИТЬСЯ В ИНСТЕ?</div><div class="topic" data-step="3">ГЛАВНОЕ ПРАВИЛО ОТНОШЕНИЙ: ЛЮБИТЬ СЕБЯ БОЛЬШЕ, ЧЕМ ЕЁ</div><div class="topic" data-step="3">КАК ЛИШИТЬСЯ МЕНТАЛЬНОЙ ДЕВСТВЕННОСТИ?</div><div class="topic" data-step="3">АХУЕННАЯ ФИШКА ДЛЯ НАЗНАЧЕНИЯ ВСТРЕЧИ</div><div class="topic" data-step="3">УСИЛИВАЕМ КОМФОРТ. ФИШКА «КОТ»</div><div class="topic" data-step="3">КАК ПОЗНАКОМИТЬСЯ В ЗАЛЕ?</div><div class="topic" data-step="3">ЧТО ДЕЛАТЬ, ЕСЛИ ОПУСКАЮТСЯ РУКИ И НЕ ПОЛУЧАЕТСЯ?</div><div class="topic" data-step="4">УПРАЖНЕНИЕ НА ПОВЫШЕНИЕ САМОЦЕННОСТИ</div><div class="topic" data-step="4">ФОТОГРАФИРУЙСЯ КАК ЕБЫРЬ, А НЕ КАК ИНЦЕЛ!</div><div class="topic" data-step="4">ДИАЛОГ С «ФАСТОВОЙ» ОТ ЗНАКОМСТВА ДО ВСТРЕЧИ</div><div class="topic" data-step="4">ЗАПИСЬ ЭФИРА «ФАСТОВОСТЬ И ВАШИ РАЗБОРЫ ДИАЛОГОВ»</div><div class="topic" data-step="4">КИНЕСТЕТИКА. КАК ПРАВИЛЬНО ТРОГАТЬ ДЕВУШКУ НА СВИДАНИИ?</div><div class="topic" data-step="4">ПОЧЕМУ ОНА НЕ ХОЧЕТ ВИДЕТЬСЯ, ХОТЯ В ПЕРЕПИСКЕ ОТКРОВЕННА?</div><div class="topic" data-step="4">ОТКАЗЫ. ВЫРАБАТЫВАЕМ ТОТАЛЬНЫЙ ПОХУИЗМ</div><div class="topic" data-step="4">МУЖСКОЙ СТЕРЖЕНЬ. РАСПОРЯДОК ДНЯ АЛЬФЫ</div><div class="topic" data-step="4">КОДЕКС МЕНТОРСТВА</div><div class="topic" data-step="4">ПОДКАСТ ПРО ОТНОШЕНИЯ</div><div class="topic" data-step="4">БАЗОВЫЕ ПРАВИЛА ИНТЕРНЕТ-ЗНАКОМСТВ</div><div class="topic" data-step="4">КАКИЕ БЫВАЮТ «СПИ»?</div></div>
@@ -1384,7 +1389,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s51" aria-label="Слайд 51">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Наполнение · доступно сразу</p>
       <h1 class="title-glow" data-step="1">Разборы диалогов — <span class="gold">с первого дня</span></h1>
       <div class="feed"><figure class="shot" data-step="2"><img src="assets/private/razbor-01.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-02.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-03.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-04.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-05.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1395,7 +1400,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s52" aria-label="Слайд 52">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Что внутри курсов</p>
       <h1 class="title-glow" data-step="1">Посты, подкасты, <span class="gold">подробнейшие разборы</span></h1>
       <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/private/kurs-01.png" alt="Разделы" loading="lazy"><figcaption>Разделы</figcaption></figure><figure class="shot" data-step="3"><img src="assets/shot-baza.jpg" alt="База менторства" loading="lazy"><figcaption>База менторства</figcaption></figure></div>
@@ -1407,7 +1412,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s53" aria-label="Слайд 53">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Про эфиры и разборы</p>
       <h1 class="title-glow" data-step="1">Не «вдохновился и забыл», <span class="gold">а план в голове</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/vynos-mozga.jpg" alt="Скриншот" loading="lazy"></figure><div class="rv-col c2"><figure class="shot" data-step="3"><img src="assets/private/rv/razyob.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/proshche.jpg" alt="Скриншот" loading="lazy"></figure></div></div>
@@ -1418,7 +1423,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s54" aria-label="Слайд 54">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Курс по сексу</p>
       <h1 class="title-glow" data-step="1">Двадцать три <span class="gold">урока</span></h1>
       <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/private/kurs-02.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/kurs-03.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1429,7 +1434,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s55" aria-label="Слайд 55">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Менторство</p>
       <h1 class="title-glow" data-step="1">Голосовые уроки: <span class="gold">ошибки</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/kurs-04.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/kurs-05.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/kurs-06.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1440,7 +1445,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s56" aria-label="Слайд 56">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Что внутри</p>
       <h1 class="title-glow" data-step="1">Разборы, а <span class="gold">не теория</span></h1>
       <div class="grid4"><figure class="shot" data-step="2"><img src="assets/private/kurs-07.png" alt="Кубик Рубика" loading="lazy"><figcaption>Кубик Рубика</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/kurs-08.png" alt="Влечение" loading="lazy"><figcaption>Влечение</figcaption></figure><figure class="shot" data-step="4"><img src="assets/private/kurs-09.png" alt="Кинестетика" loading="lazy"><figcaption>Кинестетика</figcaption></figure><figure class="shot" data-step="5"><img src="assets/private/kurs-10.png" alt="Профиль" loading="lazy"><figcaption>Профиль</figcaption></figure></div>
@@ -1451,7 +1456,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s57" aria-label="Слайд 57">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Разборы диалогов</p>
       <h1 class="title-glow" data-step="1">Свои диалоги <span class="gold">разбираю при всех</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/shot-razbory.jpg" alt="Мой диалог" loading="lazy"><figcaption>Мой диалог</figcaption></figure><figure class="shot" data-step="3"><img src="assets/shot-2ned-kejs.jpg" alt="Кейс при всех" loading="lazy"><figcaption>Кейс при всех</figcaption></figure><figure class="shot" data-step="4"><img src="assets/private/chat-14.png" alt="Парни разбирают" loading="lazy"><figcaption>Парни разбирают</figcaption></figure></div>
@@ -1462,7 +1467,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s58" aria-label="Слайд 58">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">5 · Порядок работы</p>
       <h1 class="title-glow" data-step="1">Каждый шаг — <span class="gold">вместе</span></h1>
       <ol class="numlist"><li data-step="2">Определение цели</li><li data-step="3">Стиль и внешность</li><li data-step="4">Состояние и правильные привычки</li><li data-step="5">Первый кейс</li><li data-step="6">Гормональный фон</li></ol>
@@ -1473,7 +1478,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s59" aria-label="Слайд 59">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Стиль</p>
       <h1 class="title-glow" data-step="1">Сменили стиль — <span class="gold">пошли свидания</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/case-gamlet.jpg" alt="Гамлет, 22" loading="lazy"><figcaption>Гамлет, 22</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-12.png" alt="Фото на аву" loading="lazy"><figcaption>Фото на аву</figcaption></figure><figure class="shot" data-step="4"><img src="assets/private/chat-13.png" alt="Совет от парня" loading="lazy"><figcaption>Совет от парня</figcaption></figure></div>
@@ -1484,7 +1489,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s60" aria-label="Слайд 60">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Домашки</p>
       <h1 class="title-glow" data-step="1">«Почему я <span class="gold">охуенный»</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-18.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/chat-19.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-20.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1495,7 +1500,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s61" aria-label="Слайд 61">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Дневник побед</p>
       <h1 class="title-glow" data-step="1">Каждый день — <span class="gold">победы</span></h1>
       <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-15.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/chat-16.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-17.png" alt="Скриншот" loading="lazy"></figure></div>
@@ -1506,7 +1511,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s62" aria-label="Слайд 62">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Ещё отзывы</p>
       <h1 class="title-glow" data-step="1">Решился на <span class="gold">дорогую покупку</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/macbook.jpg" alt="Скриншот" loading="lazy"></figure><div class="rv-col c2"><figure class="shot" data-step="3"><img src="assets/private/rv/respekt.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/14-pro.jpg" alt="Скриншот" loading="lazy"></figure></div></div>
@@ -1517,7 +1522,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--case" id="s63" aria-label="Слайд 63">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <span class="case-tag" data-step="1">Кейс ученика</span>
       <h1 class="title-glow" data-step="1">Ибрагим</h1>
       <div class="case-row big"><figure class="shot" data-step="2"><img src="assets/case-ibragim.jpg" alt="Слева до, справа после" loading="lazy"><figcaption>Слева до, справа после</figcaption></figure><div class="case-txt"><p data-step="3">Восемь лет в отношениях, которые его убивали</p><p data-step="4">Два месяца шёл отлично, на третьем решил всё бросить</p><p data-step="5">Улетели в Бодрум, неделя рядом со мной</p><p data-step="6">Новые отношения, дом в Подмосковье</p></div></div>
@@ -1528,7 +1533,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s64" aria-label="Слайд 64">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Ибрагим</p>
       <h1 class="title-glow" data-step="1">Своими <span class="gold">словами</span></h1>
       <div class="vid-row n2"><figure class="shot" data-step="2"><video class="slide-v" src="assets/vid-ibragim-otzyv.mp4" playsinline preload="none" poster="assets/posters/vid-ibragim-otzyv.jpg" controls></video><figcaption>О своём годе</figcaption></figure><figure class="shot" data-step="3"><video class="slide-v" src="assets/vid-ibragim-2.mp4" playsinline preload="none" poster="assets/posters/vid-ibragim-2.jpg" controls></video><figcaption>После</figcaption></figure></div>
@@ -1539,7 +1544,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--case" id="s65" aria-label="Слайд 65">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <span class="case-tag" data-step="1">Кейс ученика</span>
       <h1 class="title-glow" data-step="1">Гамлет, 22</h1>
       <div class="bigcase"><figure class="shot" data-step="2"><img src="assets/case-gamlet.jpg" alt="Слева до, справа после" loading="lazy"><figcaption>Слева до, справа после</figcaption></figure><div class="case-txt"><p data-step="3">Сменил стиль — пошли свидания</p><p data-step="4">Пришёл неуверенным: бывшая опрокинула, на свидания полгода толком не ходил</p><p data-step="5">Изменил стиль, закрывает девушек на втором-третьем свидании</p><p data-step="6">Перестал терпеть любую хуйню в свой адрес. Стал больше тратить на себя</p></div></div>
@@ -1550,7 +1555,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--case" id="s66" aria-label="Слайд 66">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <span class="case-tag" data-step="1">Кейс ученика</span>
       <h1 class="title-glow" data-step="1">Джордан</h1>
       <div class="bigcase"><figure class="shot" data-step="2"><img src="assets/case-jordan.jpg" alt="Слева до, справа после" loading="lazy"><figcaption>Слева до, справа после</figcaption></figure><div class="case-txt"><p data-step="3">Пришёл с болью, которая накопилась</p><p data-step="4">Седьмой месяц не мог справиться с расставанием</p><p data-step="5">Не умел общаться с девушками, свиданий не было</p><p data-step="6">Сомневался в каждом решении, экономил на себе во всём</p></div></div>
@@ -1561,7 +1566,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s67" aria-label="Слайд 67">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-4.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Я точно знаю</p>
       <h1 class="title-glow" data-step="1">Не за десять лет. Не за двадцать.<br><span class="gold">За год.</span></h1>
       <p class="lead" data-step="2">Как любому парню прийти к жизни, которую он хочет.</p>
@@ -1572,7 +1577,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s68" aria-label="Слайд 68">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-5.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Сейчас осень — лучшее время для буста.</p><p data-step="2">Женщины и состояние — это энергия.</p><p data-step="3">А энергия — это деньги.</p></div>
     </div></div>
   </section>
@@ -1581,7 +1586,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s69" aria-label="Слайд 69">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Женщины и состояние — это энергия.</p><p data-step="2">Энергия — это деньги.</p></div>
     </div></div>
   </section>
@@ -1590,7 +1595,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s70" aria-label="Слайд 70">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кейсы подряд</p>
       <h1 class="title-glow" data-step="1">Артём: «потолок <span class="gold">дохода подрос»</span></h1>
       <div class="vid-row n1"><figure class="shot" data-step="2"><video class="slide-v" src="assets/otzyv-artem.mp4" playsinline preload="none" poster="assets/posters/otzyv-artem.jpg" controls></video><figcaption>Артём: уверенность и доход</figcaption></figure></div>
@@ -1601,7 +1606,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s71" aria-label="Слайд 71">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Деньги</p>
       <h1 class="title-glow" data-step="1">«Не пожалел?» — <span class="gold">«Ни капли»</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/dohod-vyros.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/ni-kapli.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1612,7 +1617,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s72" aria-label="Слайд 72">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кому сюда</p>
       <h1 class="title-glow" data-step="1">Узнаёшь <span class="gold">себя?</span></h1>
       <div class="two-col"><div class="card" data-step="2"><h3>Если ты один</h3><p>Не получается знакомиться</p><p>Не знаешь, как переводить общение дальше</p><p>Не знаешь, как построить отношения</p></div><div class="card" data-step="3"><h3>Если ты в отношениях</h3><p>Они делают жизнь хуже, а ты не уходишь</p><p>Потерялся мужской стержень</p></div></div>
@@ -1624,7 +1629,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s73" aria-label="Слайд 73">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кому сюда, а кому нет</p>
       <h1 class="title-glow" data-step="1">Честно</h1>
       <div class="two-col"><div class="card" data-step="2"><h3>Тебе сюда</h3><p>Ты постоянно искал человека, который живёт так, как ты хочешь</p><p>Знает чуть больше</p><p>И не будет для тебя начальником</p></div><div class="card" data-step="3"><h3>Тебе не сюда</h3><p>Ищешь волшебную таблетку</p><p>Хочешь, чтобы за тебя всё сделали</p></div></div>
@@ -1635,7 +1640,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s74" aria-label="Слайд 74">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Зачем это мне?</p><p data-step="2">Я хочу, чтобы ты получил больше, чем заплатил.</p><p class="sm" data-step="3">Мне выгоднее, чтобы ты через год снял подкаст о том, как у тебя всё поменялось.</p></div>
     </div></div>
   </section>
@@ -1644,7 +1649,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s75" aria-label="Слайд 75">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Я твой</p>
       <h1 class="title-glow" data-step="1">Брат и наставник. <span class="gold">На год.</span></h1>
       <div class="case-row"><figure class="shot" data-step="2"><img src="assets/photo-krug-vmeste.jpg" alt="Группа" loading="lazy"><figcaption>Группа</figcaption></figure><div class="case-txt"><p data-step="3">И после года ты остаёшься в кругу</p></div></div>
@@ -1655,7 +1660,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s76" aria-label="Слайд 76">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Было — стало</p>
       <h1 class="title-glow" data-step="1">«Ожидания были <span class="gold">намного меньше»</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/shavernev.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/grishin.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1666,7 +1671,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s77" aria-label="Слайд 77">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Я знаю, что ты подумаешь</p>
       <h1 class="title-glow" data-step="1">Возражения</h1>
       <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">«Уже покупал курсы, не помогло» — там с тебя никто не спрашивал. Здесь я на связи каждый день</li><li data-step="3" style="font-size:24px">«Нет времени, работаю» — отчёт занимает пять минут вечером</li><li data-step="4" style="font-size:24px">«Мне поздно» — Роману сорок пять</li><li data-step="5" style="font-size:24px">«Мне рано» — Гамлету двадцать два, Тимуру двадцать три</li></ul>
@@ -1677,7 +1682,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s78" aria-label="Слайд 78">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-6.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Я сам учился в долг.</p><p data-step="2">С красной кредитной историей.</p></div>
     </div></div>
   </section>
@@ -1686,7 +1691,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s79" aria-label="Слайд 79">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">«Кайфанул, когда оплатил.</p><p data-step="2">Никогда в жизни так много денег</p><p data-step="3">на себя и свою голову не тратил»</p></div>
     </div></div>
   </section>
@@ -1695,7 +1700,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s80" aria-label="Слайд 80">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">И ещё</p>
       <h1 class="title-glow" data-step="1">Специально <span class="gold">для хейтеров</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/kolyan.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/dlya-hejterov.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1706,7 +1711,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s81" aria-label="Слайд 81">
     <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-7.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="quote-lines"><p data-step="1">Каждый отсроченный месяц и год</p><p data-step="2">отдаляет тебя от жизни, которую ты хочешь.</p></div>
     </div></div>
   </section>
@@ -1715,7 +1720,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s82" aria-label="Слайд 82">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Беру не всех</p>
       <h1 class="title-glow" data-step="1">Случайных людей <span class="gold">нет</span></h1>
       <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/group-lounge.jpg" alt="Кто уже зашёл" loading="lazy"><figcaption>Кто уже зашёл</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-01.png" alt="Нового встречают" loading="lazy"><figcaption>Нового встречают</figcaption></figure></div>
@@ -1726,7 +1731,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--rv" id="s83" aria-label="Слайд 83">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Это работает</p>
       <h1 class="title-glow" data-step="1">«Мою жизнь <span class="gold">точно изменил»</span></h1>
       <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/rustam-1.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/rustam-2.jpg" alt="Скриншот" loading="lazy"></figure></div>
@@ -1737,7 +1742,7 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide slide--chat" id="s84" aria-label="Слайд 84">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Беру не всех · мне важно окружение, случайных людей нет</p>
       <h1 class="title-glow" data-step="1">113 <span class="gold">заявок</span> на менторство</h1>
       <div class="pair one"><figure class="shot" data-step="2"><img src="assets/private/getcourse-zayavki.png" alt="GetCourse · заказы «Менторство» · 01.10.2026" loading="lazy"><figcaption>GetCourse · заказы «Менторство» · 01.10.2026</figcaption></figure></div>
@@ -1745,14 +1750,13 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   </section>
 
   <!-- ========================= 85 ========================= -->
-  <section class="slide" id="s85" aria-label="Слайд 85">
+  <section class="slide slide--chat" id="s85" aria-label="Слайд 85">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <p class="eyebrow" data-step="1">113 заявок прямо сейчас · для тех, кто досмотрел</p>
-      <h1 class="title-glow" data-step="1">Десять <span class="gold">мест</span></h1>
-      <div class="ten"><div class="c" data-step="2">1</div><div class="c" data-step="2">2</div><div class="c" data-step="2">3</div><div class="c" data-step="2">4</div><div class="c" data-step="2">5</div><div class="c" data-step="2">6</div><div class="c" data-step="2">7</div><div class="c" data-step="2">8</div><div class="c" data-step="2">9</div><div class="c" data-step="2">10</div></div>
-      <p class="note" data-step="3">Я лично работаю с каждым. Больше — не вывезу.</p>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <p class="eyebrow" data-step="1">И мне пишут сами · вот пример</p>
+      <h1 class="title-glow" data-step="1">113 заявок. <span class="gold">Пишут вот так</span></h1>
+      <div class="dm"><figure class="shot" data-step="2"><img src="assets/private/pishut-01.jpg" alt="Скриншот" loading="lazy"></figure><div class="dm-side"><div class="bubble" data-step="3">Добрый день огромное спасибо за помощь скажите пожалуйста как я могу записаться на менторство заранее спасибо хорошего дня</div><p class="note" data-step="4">Парни сами пишут, что хотят ко мне на менторство. Беру не всех.</p></div></div>
     </div></div>
   </section>
 
@@ -1760,18 +1764,30 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s86" aria-label="Слайд 86">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <p class="eyebrow" data-step="1">113 заявок прямо сейчас · для тех, кто досмотрел</p>
+      <h1 class="title-glow" data-step="1">Десять <span class="gold">мест</span></h1>
+      <div class="ten"><div class="c" data-step="2">1</div><div class="c" data-step="2">2</div><div class="c" data-step="2">3</div><div class="c" data-step="2">4</div><div class="c" data-step="2">5</div><div class="c" data-step="2">6</div><div class="c" data-step="2">7</div><div class="c" data-step="2">8</div><div class="c" data-step="2">9</div><div class="c" data-step="2">10</div></div>
+      <p class="note" data-step="3">Я лично работаю с каждым. Больше — не вывезу.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 87 ========================= -->
+  <section class="slide" id="s87" aria-label="Слайд 87">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">За заполненную анкету</p>
       <h1 class="title-glow" data-step="1">Два <span class="gold">бонуса</span></h1>
       <div class="bonuses"><div class="bonus" data-step="2"><div class="cover"><img src="assets/bonus-srednehorosho.jpg" alt="«Как перестать жить среднехорошо»"></div><span class="tag">Бонус 1 · видео</span><h3>«Как перестать жить среднехорошо»</h3><p>Про состояние, когда вроде всё нормально: работа есть, деньги какие-то есть, женщина какая-то есть. И именно поэтому годами ничего не меняется</p></div><div class="bonus" data-step="3"><div class="cover"><img src="assets/bonus-vlog.jpg" alt="Менторство изнутри"></div><span class="tag">Бонус 2 · влог</span><h3>Менторство изнутри</h3><p>Инсайты и ученики. Почувствуешь атмосферу, зарядишься результатами — и тебе будет проще принять решение</p></div></div>
     </div></div>
   </section>
 
-  <!-- ========================= 87 ========================= -->
-  <section class="slide slide--offer" id="s87" aria-label="Слайд 87">
+  <!-- ========================= 88 ========================= -->
+  <section class="slide slide--offer" id="s88" aria-label="Слайд 88">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Специальное предложение · только с этого видео</p>
       <h1 class="title-glow" data-step="1">Целый год со мной — <span class="gold">по цене трёх месяцев</span></h1>
       <div class="offer"><div class="ofr was" data-step="2"><span class="k">Другие за эту цену</span><span class="n">3</span><span class="u">месяца менторства</span></div><div class="arr" data-step="3">→</div><div class="ofr now" data-step="3"><span class="k">Ты за эту же цену</span><span class="n">12</span><span class="u">месяцев — целый год со мной</span></div></div>
@@ -1780,22 +1796,22 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 88 ========================= -->
-  <section class="slide" id="s88" aria-label="Слайд 88">
+  <!-- ========================= 89 ========================= -->
+  <section class="slide" id="s89" aria-label="Слайд 89">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Что сделать</p>
       <h1 class="title-glow" data-step="1">Звонок бесплатный. <span class="gold">Беру не всех</span></h1>
       <ol class="numlist"><li data-step="2">Заполняешь анкету</li><li data-step="3">Сразу получаешь два подарка. Смотришь оба — и для тебя открывается год по цене трёх месяцев</li><li data-step="4">С тобой связывается Саня, наставник проекта: бесплатная консультация. Он сам был на твоём месте</li><li data-step="5">Тех, кого отберём, зову на звонок лично со мной</li></ol>
     </div></div>
   </section>
 
-  <!-- ========================= 89 ========================= -->
-  <section class="slide slide--wall" id="s89" aria-label="Слайд 89">
+  <!-- ========================= 90 ========================= -->
+  <section class="slide slide--wall" id="s90" aria-label="Слайд 90">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <div class="wall-grid" data-step="1"><img src="assets/private/wall/p168.jpg" alt="" loading="lazy"><img src="assets/private/wall/s117.jpg" alt="" loading="lazy"><img src="assets/private/wall/p169.jpg" alt="" loading="lazy"><img src="assets/private/wall/s118.jpg" alt="" loading="lazy"><img src="assets/private/wall/p170.jpg" alt="" loading="lazy"><img src="assets/private/wall/s119.jpg" alt="" loading="lazy"><img src="assets/private/wall/p171.jpg" alt="" loading="lazy"><img src="assets/private/wall/s120.jpg" alt="" loading="lazy"><img src="assets/private/wall/p172.jpg" alt="" loading="lazy"><img src="assets/private/wall/s121.jpg" alt="" loading="lazy"><img src="assets/private/wall/p173.jpg" alt="" loading="lazy"><img src="assets/private/wall/s122.jpg" alt="" loading="lazy"><img src="assets/private/wall/p174.jpg" alt="" loading="lazy"><img src="assets/private/wall/s123.jpg" alt="" loading="lazy"><img src="assets/private/wall/p175.jpg" alt="" loading="lazy"><img src="assets/private/wall/s124.jpg" alt="" loading="lazy"><img src="assets/private/wall/p176.jpg" alt="" loading="lazy"><img src="assets/private/wall/s125.jpg" alt="" loading="lazy"><img src="assets/private/wall/p177.jpg" alt="" loading="lazy"><img src="assets/private/wall/s126.jpg" alt="" loading="lazy"><img src="assets/private/wall/p178.jpg" alt="" loading="lazy"><img src="assets/private/wall/s127.jpg" alt="" loading="lazy"><img src="assets/private/wall/p179.jpg" alt="" loading="lazy"><img src="assets/private/wall/s128.jpg" alt="" loading="lazy"></div>
       <div class="wall-txt">      <p class="eyebrow" data-step="2">Ты следующий</p>
       <h1 class="title-glow" data-step="2">Не получится — <span class="gold">просто не может</span></h1>
@@ -1803,21 +1819,12 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
     </div></div>
   </section>
 
-  <!-- ========================= 90 ========================= -->
-  <section class="slide" id="s90" aria-label="Слайд 90">
-    
-    <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <div class="quote-lines"><p data-step="1">Допустим, ты забил.</p><p data-step="2">Что в твоей жизни поменялось</p><p data-step="3">за год, за два, за три?</p></div>
-    </div></div>
-  </section>
-
   <!-- ========================= 91 ========================= -->
   <section class="slide" id="s91" aria-label="Слайд 91">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <div class="quote-lines"><p data-step="1">Какое должно произойти чудо,</p><p data-step="2">чтобы ты начал зарабатывать больше?</p><p data-step="3">Чтобы у тебя появились женщины?</p></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <div class="quote-lines"><p data-step="1">Допустим, ты забил.</p><p data-step="2">Что в твоей жизни поменялось</p><p data-step="3">за год, за два, за три?</p></div>
     </div></div>
   </section>
 
@@ -1825,10 +1832,8 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s92" aria-label="Слайд 92">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <p class="eyebrow" data-step="1">Делаем прямо сейчас</p>
-      <p class="do-q title-glow" data-step="1">Запиши ответ<br>одной строкой</p>
-      <div class="do-sub"><span data-step="2">Он понадобится в анкете</span></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <div class="quote-lines"><p data-step="1">Какое должно произойти чудо,</p><p data-step="2">чтобы ты начал зарабатывать больше?</p><p data-step="3">Чтобы у тебя появились женщины?</p></div>
     </div></div>
   </section>
 
@@ -1836,28 +1841,30 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s93" aria-label="Слайд 93">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <div class="quote-lines"><p data-step="1">Тебя готовили быть удобным.</p><p data-step="2">Из этой точки в другую приходят за год.</p><p data-step="3">Я твой брат и наставник. На год.</p><p data-step="4">Каждый отсроченный месяц отдаляет.</p></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <p class="eyebrow" data-step="1">Делаем прямо сейчас</p>
+      <p class="do-q title-glow" data-step="1">Запиши ответ<br>одной строкой</p>
+      <div class="do-sub"><span data-step="2">Он понадобится в анкете</span></div>
     </div></div>
   </section>
 
   <!-- ========================= 94 ========================= -->
   <section class="slide" id="s94" aria-label="Слайд 94">
-    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-8.jpg)"></div>
+    
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <p class="eyebrow" data-step="1">Тебе крупно повезло</p>
-      <h1 class="title-glow" data-step="1">Заполняй <span class="gold">анкету</span></h1>
-      <p class="lead" data-step="2">Ссылка на анкету — под этим видео. Год по цене трёх месяцев — только отсюда.</p>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <div class="quote-lines"><p data-step="1">Тебя готовили быть удобным.</p><p data-step="2">Из этой точки в другую приходят за год.</p><p data-step="3">Я твой брат и наставник. На год.</p><p data-step="4">Каждый отсроченный месяц отдаляет.</p></div>
     </div></div>
   </section>
 
   <!-- ========================= 95 ========================= -->
   <section class="slide" id="s95" aria-label="Слайд 95">
-    
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-8.jpg)"></div>
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
-      <div class="quote-lines"><p data-step="1">Видео закончилось.</p><p data-step="2">Дальше — истории учеников.</p></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <p class="eyebrow" data-step="1">Тебе крупно повезло</p>
+      <h1 class="title-glow" data-step="1">Заполняй <span class="gold">анкету</span></h1>
+      <p class="lead" data-step="2">Ссылка на анкету — под этим видео. Год по цене трёх месяцев — только отсюда.</p>
     </div></div>
   </section>
 
@@ -1865,29 +1872,38 @@ video.slide-v, audio.slide-a{position:relative;z-index:9}
   <section class="slide" id="s96" aria-label="Слайд 96">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
+      <div class="quote-lines"><p data-step="1">Видео закончилось.</p><p data-step="2">Дальше — истории учеников.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 97 ========================= -->
+  <section class="slide" id="s97" aria-label="Слайд 97">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Голос из группы</p>
       <h1 class="title-glow" data-step="1">Ученик <span class="gold">после недели</span></h1>
       <div class="krug-row"><figure class="krug" data-step="2"><video class="slide-v" src="assets/krug-uchenik.mp4" playsinline preload="none" poster="assets/posters/krug-uchenik.jpg" controls></video><figcaption>Видеосообщение из чата</figcaption></figure></div>
     </div></div>
   </section>
 
-  <!-- ========================= 97 ========================= -->
-  <section class="slide slide--case" id="s97" aria-label="Слайд 97">
+  <!-- ========================= 98 ========================= -->
+  <section class="slide slide--case" id="s98" aria-label="Слайд 98">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <span class="case-tag" data-step="1">Кейс ученика</span>
       <h1 class="title-glow" data-step="1">Кирилл</h1>
       <div class="bigcase"><figure class="shot" data-step="2"><img src="assets/shot-otzyv-kirill.jpg" alt="Сообщение Кирилла" loading="lazy"><figcaption>Сообщение Кирилла</figcaption></figure><div class="case-txt"><p data-step="3">Вторая неделя личной работы</p><p data-step="4">Запустил профиль</p><p data-step="5">Девушки пишут сами</p></div></div>
     </div></div>
   </section>
 
-  <!-- ========================= 98 ========================= -->
-  <section class="slide" id="s98" aria-label="Слайд 98">
+  <!-- ========================= 99 ========================= -->
+  <section class="slide" id="s99" aria-label="Слайд 99">
     
     <div class="glow px" style="--d:0.22"></div>
-    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+    <div class="wrap"><div class="col col--map px" style="--d:0.45">
       <p class="eyebrow" data-step="1">Кейс</p>
       <h1 class="title-glow" data-step="1">Максон: минус 12 кг и <span class="gold">годовое менторство</span></h1>
       <div class="vid-row n1"><figure class="shot" data-step="2"><video class="slide-v" src="assets/otzyv-makson.mp4" playsinline preload="none" poster="assets/posters/otzyv-makson.jpg" controls></video><figcaption>«Я даже не раздумывал, залетел прям сразу»</figcaption></figure></div>
