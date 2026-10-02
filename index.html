@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Менторство · видео для своих</title>
+<meta name="description" content="Десять интерактивных слайдов, которые объясняют систему менторства Yulov University: семь шагов, ежедневный отчёт, еженедельный разбор.">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Yulov University · Слайды менторства
+   Токены сняты с боевой страницы websites/razbor-live/index.html
+   ============================================================ */
+:root{
+  --yu-jet-black:#0A0A0A; --yu-bone-white:#EFEDEB;
+  --yu-champagne-gold:#D9C6A3; --yu-antique-gold:#B8955C;
+  --yu-deep-burgundy:#7A0F1D; --yu-graphite:#2D2D33;
+
+  --ink-000:#050506; --ink-050:#0A0A0A; --ink-100:#101014; --ink-200:#16161B;
+  --ink-600:#55555F; --ink-700:#7B7B85; --ink-800:#A9A9B1; --ink-950:#EFEDEB;
+  --gold-100:#F2E9D8; --gold-200:#E5D6B9; --gold-300:#D9C6A3;
+  --gold-400:#C7AE83; --gold-500:#B8955C; --gold-600:#967543;
+  --burgundy-300:#C4404F; --burgundy-500:#7A0F1D;
+
+  --line-hairline:rgba(239,237,235,.10);
+  --line-gold:rgba(217,198,163,.30);
+  --line-gold-strong:rgba(217,198,163,.62);
+
+  --font-display:"Prata","Sang Bleu","Times New Roman",Georgia,serif;
+  --font-text:"Montserrat","Manrope","Helvetica Neue",system-ui,sans-serif;
+  --ls-wordmark:.34em; --ls-eyebrow:.22em; --ls-label:.14em;
+
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur-rv:820ms;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:#000;color:var(--ink-950);
+  font-family:var(--font-text);font-weight:300;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow:hidden;touch-action:manipulation;
+}
+img{display:block;max-width:100%}
+
+/* ------------------------------------------------------------
+   Сцена. Жёсткие 1600x900, масштабируется под любой экран.
+   Так слайд одинаково выглядит и на мониторе, и в записи экрана.
+   ------------------------------------------------------------ */
+#viewport{position:fixed;inset:0;display:block;background:#000;overflow:hidden}
+#stage{
+  position:absolute;top:0;left:0;width:1600px;height:900px;
+  transform-origin:0 0;background:var(--yu-jet-black);overflow:hidden;
+}
+
+/* фоновая фактура: шум + тёплое свечение снизу */
+#stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:6;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");
+  opacity:.05;mix-blend-mode:overlay;
+}
+
+.slide{
+  position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity .55s ease,visibility .55s;
+}
+.slide.is-active{opacity:1;visibility:visible}
+
+/* ------------------------------------------ тематический фон слайда, ЧБ
+   Картинка лежит под всем контентом и приглушена дважды: маской слева, где
+   идёт текст, и тёмной вуалью сверху. Задача фона — дать воздух, а не спорить
+   с буквами. */
+.slide-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-size:cover;background-position:center;
+  opacity:.78;filter:grayscale(1) contrast(1.06);
+  -webkit-mask-image:linear-gradient(100deg,transparent 2%,rgba(0,0,0,.34) 26%,#000 56%);
+          mask-image:linear-gradient(100deg,transparent 2%,rgba(0,0,0,.34) 26%,#000 56%);
+}
+.slide-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,10,10,.62),transparent 42%,rgba(10,10,10,.34));
+}
+
+/* ------------------------------------------ знак Yulov University
+   Верхний вордмарк живёт в .chrome и в рендере пропадает. Этот знак остаётся
+   на слайде всегда, в том числе в готовых mp4. */
+.slide::after{
+  content:"";position:absolute;right:100px;bottom:50px;width:56px;height:48px;z-index:5;
+  background:url(assets/logo-yu.png) center/contain no-repeat;
+  opacity:.17;pointer-events:none;
+}
+.slide--board::after{right:74px;bottom:22px;width:40px;height:34px;opacity:.13}
+
+/* ------------------------------------------------------------ фон-картинка */
+.hero{
+  position:absolute;top:0;right:0;width:62%;height:100%;overflow:hidden;z-index:1;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 26%,#000 58%);
+          mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 26%,#000 58%);
+}
+.hero img,.hero video{width:100%;height:100%;object-fit:cover;opacity:.92;display:block}
+.hero img{transform:scale(1.08);transition:transform 9s linear}
+.slide.is-active .hero img{transform:scale(1)}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,10,10,.72),transparent 46%);
+}
+
+/* тёплое свечение снизу — брендовый аналог фиолетового ореола в референсе */
+.glow{
+  position:absolute;left:50%;bottom:-38%;width:1180px;height:760px;transform:translateX(-50%);
+  background:radial-gradient(ellipse at center,rgba(184,149,92,.34),rgba(184,149,92,.10) 42%,transparent 68%);
+  filter:blur(28px);z-index:2;pointer-events:none;animation:breathe 9s ease-in-out infinite;
+}
+.glow--left{left:22%;bottom:-42%;width:920px}
+@keyframes breathe{0%,100%{opacity:.72}50%{opacity:1}}
+
+/* призрачная цифра на фоне */
+.ghost{
+  position:absolute;right:3%;bottom:-13%;z-index:2;pointer-events:none;
+  font-family:var(--font-display);font-size:520px;line-height:.8;
+  color:rgba(239,237,235,.034);letter-spacing:-.03em;
+}
+.ghost--word{right:auto;left:3%;bottom:-4%;font-size:210px;text-transform:uppercase;letter-spacing:.02em}
+
+/* ------------------------------------------------------------ контент */
+.wrap{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:0 104px}
+.wrap::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.88) 34%,rgba(10,10,10,.42) 60%,rgba(10,10,10,0) 78%);
+}
+.wrap--wide{padding:0 104px}
+.col{max-width:840px}
+.col--narrow{max-width:700px}
+.col--full{max-width:1180px}
+
+.eyebrow{
+  display:flex;align-items:center;gap:16px;margin:0 0 26px;
+  font-size:12px;font-weight:600;letter-spacing:var(--ls-eyebrow);
+  text-transform:uppercase;color:var(--gold-300);
+}
+.eyebrow::before{content:"";width:46px;height:1px;background:var(--line-gold-strong);flex:none}
+
+h1,h2{margin:0;font-family:var(--font-display);font-weight:400;color:var(--ink-950)}
+h1{font-size:96px;line-height:1.02;letter-spacing:.005em;text-transform:uppercase}
+h2{font-size:64px;line-height:1.06;letter-spacing:.01em;text-transform:uppercase}
+h2.h2--sm{font-size:52px}
+.title-glow{text-shadow:0 0 70px rgba(217,198,163,.30),0 0 24px rgba(217,198,163,.16)}
+.gold{color:var(--gold-300)}
+
+.lead{margin:30px 0 0;font-size:24px;font-weight:300;line-height:1.5;color:rgba(239,237,235,.78);max-width:760px}
+.kicker{margin:26px 0 0;font-size:23px;font-weight:400;line-height:1.46;color:var(--gold-200);max-width:780px}
+.note{margin:0;font-size:17px;font-weight:300;line-height:1.55;color:rgba(239,237,235,.72)}
+
+/* строки-чипы «даже если» */
+.chips{display:flex;flex-direction:column;gap:12px;margin:44px 0 0}
+.chip{
+  display:inline-flex;align-items:center;gap:14px;width:fit-content;
+  padding:11px 20px;border:1px solid var(--line-hairline);border-radius:2px;
+  font-size:16px;font-weight:300;color:rgba(239,237,235,.80);background:rgba(239,237,235,.02);
+}
+.chip::before{content:"";width:5px;height:5px;background:var(--gold-500);flex:none;transform:rotate(45deg)}
+
+/* ------------------------------------------------------------ пилюли-шаги */
+.pills{display:flex;flex-direction:column;gap:13px;margin:46px 0 0;max-width:980px}
+.pills--tight{gap:11px;margin-top:38px}
+.pill{
+  display:flex;align-items:center;gap:26px;
+  padding:21px 32px;border:1px solid var(--line-gold);border-radius:3px;
+  background:linear-gradient(90deg,rgba(217,198,163,.09),rgba(217,198,163,.015) 62%,transparent);
+  box-shadow:inset 0 1px 0 rgba(239,237,235,.05),0 22px 60px -34px rgba(184,149,92,.9);
+}
+.pill .n{
+  font-family:var(--font-display);font-size:30px;line-height:1;color:var(--gold-300);
+  min-width:38px;text-shadow:0 0 26px rgba(217,198,163,.55);
+}
+.pill .t{font-size:24px;font-weight:400;letter-spacing:.005em;color:var(--ink-950)}
+.pill .s{display:block;font-size:15px;font-weight:300;color:rgba(239,237,235,.60);margin-top:4px}
+.pill--plain{gap:20px}
+.pill--plain .n{font-size:12px;font-weight:600;font-family:var(--font-text);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--gold-400);min-width:150px;text-shadow:none}
+
+/* ------------------------------------------------------------ список-механика */
+.mech{list-style:none;margin:38px 0 0;padding:0;display:flex;flex-direction:column;gap:20px;max-width:790px}
+.mech li{position:relative;padding-left:34px;font-size:21px;font-weight:300;line-height:1.45;color:rgba(239,237,235,.90)}
+.mech li::before{
+  content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;
+  background:var(--gold-500);box-shadow:0 0 12px rgba(184,149,92,.8);
+}
+.mech b{font-weight:500;color:var(--ink-950)}
+
+/* шкала шести направлений */
+.scale{display:flex;gap:14px;margin:42px 0 0;flex-wrap:wrap}
+.scale .s-item{
+  flex:1 1 0;min-width:150px;padding:18px 18px 16px;
+  border:1px solid var(--line-hairline);border-radius:2px;background:rgba(239,237,235,.02);
+}
+.scale .s-name{font-size:16px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-950)}
+.scale .s-bar{display:flex;gap:4px;margin-top:12px}
+.scale .s-bar i{flex:1;height:5px;background:rgba(239,237,235,.10);border-radius:1px}
+.scale .s-bar i.on{background:var(--gold-400);box-shadow:0 0 10px rgba(184,149,92,.7)}
+.scale .s-num{margin-top:9px;font-family:var(--font-display);font-size:15px;color:var(--gold-300)}
+
+/* цитата-пример отчёта */
+.quote{
+  margin:36px 0 0;padding:26px 30px;max-width:760px;
+  border-left:2px solid var(--line-gold-strong);background:rgba(239,237,235,.025);
+  font-size:20px;font-weight:300;line-height:1.5;color:rgba(239,237,235,.86);
+}
+
+/* «если этот шаг не сделать» */
+.fail{
+  display:flex;gap:16px;align-items:flex-start;margin:40px 0 0;max-width:760px;
+  padding:18px 24px;border:1px solid rgba(122,15,29,.55);border-radius:2px;
+  background:linear-gradient(90deg,rgba(122,15,29,.20),rgba(122,15,29,.04) 70%,transparent);
+}
+.fail .lbl{
+  flex:none;font-size:11px;font-weight:600;letter-spacing:var(--ls-label);text-transform:uppercase;
+  color:var(--burgundy-300);padding-top:4px;min-width:118px;
+}
+.fail .txt{font-size:17px;font-weight:300;line-height:1.5;color:rgba(239,237,235,.84)}
+
+
+/* ------------------------------------------------------------
+   Петля: ?render=1&loop=1&slide=N
+   Всё раскрыто, движется только фон и свечение. Длина кадра равна
+   длине фонового клипа, поэтому последний кадр стыкуется с первым.
+   ------------------------------------------------------------ */
+body.render.loop [data-step]{animation:none;opacity:1;transform:none;filter:none}
+body.render.loop .glow{animation:breathe var(--loop-dur,10s) ease-in-out infinite}
+body.render.loop .hero img{animation:none;transform:none}
+body.render.loop .hero video{animation:none}
+
+/* ------------------------------------------------------------ появление элементов */
+[data-step]{
+  opacity:0;transform:translateY(20px);filter:blur(7px);
+  transition:opacity var(--dur-rv) var(--ease-out),transform var(--dur-rv) var(--ease-out),filter var(--dur-rv) var(--ease-out);
+  will-change:opacity,transform;
+}
+[data-step].shown{opacity:1;transform:none;filter:none}
+
+/* ------------------------------------------------------------ хром */
+.chrome{position:absolute;z-index:8;transition:opacity .3s}
+body.no-chrome .chrome{opacity:0;pointer-events:none}
+
+.wordmark{
+  top:46px;left:104px;font-size:11px;font-weight:600;letter-spacing:var(--ls-wordmark);
+  text-transform:uppercase;color:rgba(239,237,235,.42);
+}
+.counter{
+  top:44px;right:104px;font-family:var(--font-display);font-size:16px;color:rgba(239,237,235,.42);
+}
+.counter b{color:var(--gold-300);font-weight:400}
+
+.rail{bottom:18px;left:104px;right:104px;display:flex;gap:7px;align-items:center}
+.rail button{
+  flex:1;height:2px;padding:0;border:0;background:rgba(239,237,235,.12);cursor:pointer;
+  transition:background .3s,box-shadow .3s;
+}
+.rail button:hover{background:rgba(239,237,235,.34)}
+.rail button.done{background:rgba(217,198,163,.42)}
+.rail button.cur{background:var(--gold-300);box-shadow:0 0 14px rgba(217,198,163,.9)}
+.rail button:focus-visible{outline:2px solid rgba(217,198,163,.55);outline-offset:4px}
+
+.hint{
+  bottom:40px;left:50%;transform:translateX(-50%);
+  font-size:11px;font-weight:500;letter-spacing:var(--ls-label);text-transform:uppercase;
+  color:rgba(239,237,235,.34);white-space:nowrap;
+}
+.hint kbd{
+  font-family:var(--font-text);font-size:11px;border:1px solid var(--line-hairline);
+  padding:3px 7px;margin:0 3px;border-radius:2px;color:rgba(239,237,235,.58);
+}
+
+/* зоны клика */
+.tap{position:absolute;top:0;bottom:0;z-index:7;cursor:pointer;background:transparent;border:0;
+  pointer-events:none}  /* клики ловит документ, иначе кнопка накрывает плееры */
+.tap--prev{left:0;width:22%;cursor:w-resize}
+.tap--next{left:22%;right:0;cursor:e-resize}
+
+/* ------------------------------------------------------------
+   Режим рендера: ?render=1&slide=N
+   Слайд играет сам по таймлайну, кадры снимает scripts/render-slides.mjs.
+   Тот же HTML — значит видео и деск не разъезжаются.
+   ------------------------------------------------------------ */
+body.render{background:var(--yu-jet-black)}
+body.render .chrome{display:none}
+body.render .slide{transition:none}
+body.render [data-step]{
+  transition:none;opacity:0;
+  animation:rv 900ms var(--ease-out) both;
+  animation-delay:calc(350ms + (var(--step) - 1) * 900ms);
+}
+@keyframes rv{
+  from{opacity:0;transform:translateY(24px);filter:blur(9px)}
+  to{opacity:1;transform:none;filter:none}
+}
+body.render .hero img{transition:none;transform:none;animation:kenburns 16s linear both}
+body.render .hero video{animation:none;transform:none}
+@keyframes kenburns{from{transform:scale(1.09)}to{transform:scale(1)}}
+body.render .glow{animation:breathe 9s ease-in-out infinite}
+
+@media (prefers-reduced-motion:reduce){
+  :root{--dur-rv:1ms}
+  .glow{animation:none}
+  .hero img{transition:none;transform:none}
+  .slide{transition:none}
+}
+
+/* ============================================================
+   Параллакс: слои двигаются с разной скоростью и глубиной
+   --d — глубина слоя, 0 = дальний план, 1 = ближний.
+   Камера идёт медленно и в одну сторону, как в роликах Apple.
+   ============================================================ */
+.px{animation:camdrift 15s cubic-bezier(.33,0,.12,1) both;will-change:transform}
+@keyframes camdrift{
+  from{transform:translate3d(calc(var(--d) * 22px),calc(var(--d) * 12px),0) scale(calc(1 + var(--d) * .06))}
+  to  {transform:translate3d(calc(var(--d) * -16px),calc(var(--d) * -7px),0) scale(1)}
+}
+/* в петле камера ходит туда-обратно за один период — стык не рвётся */
+body.render.loop .px{animation:camloop var(--loop-dur,10s) ease-in-out infinite}
+@keyframes camloop{
+  0%,100%{transform:translate3d(calc(var(--d) * 10px),calc(var(--d) * 5px),0) scale(1)}
+  50%    {transform:translate3d(calc(var(--d) * -10px),calc(var(--d) * -5px),0) scale(calc(1 + var(--d) * .035))}
+}
+@media (prefers-reduced-motion:reduce){.px{animation:none}}
+
+/* ============================================================
+   Раскладка слайда-схемы
+   ============================================================ */
+.wrap--split{
+  display:grid;grid-template-columns:632px 1fr;gap:56px;align-items:center;
+  padding:0 104px 96px;
+}
+.col--left{max-width:632px}
+.col--left h2{font-size:50px}
+.col--left h2.h2--sm{font-size:42px}
+.col--left .kicker{font-size:19px;margin-top:20px;max-width:600px}
+.col--left .mech{margin-top:28px;gap:15px;max-width:620px}
+.col--left .mech li{font-size:17px;padding-left:28px}
+.col--left .mech li::before{top:10px;width:5px;height:5px;border-radius:50%}
+.col--left .fail{margin-top:26px;padding:14px 20px;max-width:620px}
+.col--left .fail .lbl{min-width:104px;font-size:10px}
+.col--left .fail .txt{font-size:15px}
+
+.panel{display:flex;align-items:center;justify-content:center}
+.col--map{max-width:none;width:100%}
+
+/* атмосферный фон на слайдах-схемах уходит вглубь */
+.slide--step .hero{opacity:.12;filter:blur(5px)}
+.slide--step .hero::after{background:linear-gradient(to top,rgba(10,10,10,.80),rgba(10,10,10,.45))}
+
+/* ============================================================
+   Общие стили схем
+   ============================================================ */
+.dg{width:100%;height:auto;overflow:visible}
+.dg text{font-family:var(--font-text);fill:rgba(239,237,235,.88)}
+.dg .lbl{font-size:16px;font-weight:400}
+.dg .lbl-sm{font-size:14px;font-weight:400;fill:rgba(239,237,235,.66)}
+.dg .cap{font-size:11px;font-weight:600;letter-spacing:.16em;fill:var(--gold-300)}
+.dg .cap-dim{font-size:11px;font-weight:600;letter-spacing:.16em;fill:rgba(239,237,235,.45)}
+.dg .cap-bad{font-size:11px;font-weight:600;letter-spacing:.16em;fill:var(--burgundy-300)}
+.dg .num{font-family:var(--font-display);font-size:23px;fill:var(--gold-300)}
+.dg .num-lg{font-family:var(--font-display);font-size:34px;fill:var(--gold-300)}
+
+.dg .box{fill:rgba(239,237,235,.035);stroke:rgba(239,237,235,.16);stroke-width:1}
+.dg .box-gold{fill:rgba(217,198,163,.08);stroke:rgba(217,198,163,.45);stroke-width:1.2}
+.dg .box-bad{fill:rgba(122,15,29,.20);stroke:rgba(122,15,29,.62);stroke-width:1}
+
+.dg .ln{stroke:rgba(217,198,163,.66);stroke-width:2;fill:none}
+.dg .ln-thin{stroke:rgba(217,198,163,.34);stroke-width:1.2;fill:none}
+.dg .ln-web{stroke:rgba(217,198,163,.15);stroke-width:1;fill:none}
+.dg .ln-dim{stroke:rgba(239,237,235,.20);stroke-width:1.4;fill:none;stroke-dasharray:5 7}
+.dg .ln-bad{stroke:rgba(196,64,79,.75);stroke-width:1.6;fill:none}
+
+.dg .node{fill:#0D0D10;stroke:rgba(217,198,163,.45);stroke-width:1.5}
+.dg .node-on{fill:rgba(217,198,163,.20);stroke:var(--gold-300);stroke-width:2.2}
+.dg .fill-gold{fill:var(--gold-300)}
+.dg .fill-dim{fill:rgba(239,237,235,.13)}
+.dg .fill-bad{fill:rgba(122,15,29,.55)}
+.dg .lit{filter:url(#goldglow)}
+
+/* ============================================================
+   Хаб: шесть направлений вокруг центра
+   ============================================================ */
+.hub .hub-ring{fill:rgba(217,198,163,.07);stroke:var(--gold-300);stroke-width:1.6}
+.hub .hub-ring-off{fill:rgba(239,237,235,.03);stroke:rgba(217,198,163,.28);stroke-width:1.3}
+.hub .hub-core{fill:rgba(217,198,163,.16);stroke:var(--gold-300);stroke-width:2}
+.hub .hub-name{font-size:17px;font-weight:600;letter-spacing:.12em;fill:var(--ink-950)}
+.hub .hub-name-off{font-size:17px;font-weight:600;letter-spacing:.12em;fill:rgba(239,237,235,.50)}
+.hub .hub-core-name{font-family:var(--font-display);font-size:24px;letter-spacing:.05em;fill:var(--gold-100)}
+.hub .hub-core-sub{font-size:11px;font-weight:600;letter-spacing:.18em;fill:rgba(239,237,235,.62)}
+
+/* появление узла из глубины — фирменный «эпл»-заход */
+.rv-depth{transform-box:fill-box;transform-origin:center}
+body.render .rv-depth{animation:rvdepth 1100ms cubic-bezier(.16,1,.3,1) both;animation-delay:calc(350ms + (var(--step) - 1) * 900ms)}
+@keyframes rvdepth{
+  from{opacity:0;transform:scale(1.32);filter:blur(15px)}
+  62% {opacity:1}
+  to  {opacity:1;transform:scale(1);filter:blur(0)}
+}
+
+/* ============================================================
+   Точка Б: четыре плоскости
+   ============================================================ */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px;width:100%}
+.quad .q{
+  padding:24px 28px 26px;border:1px solid var(--line-hairline);border-radius:3px;
+  background:linear-gradient(160deg,rgba(217,198,163,.06),rgba(239,237,235,.015) 60%,transparent);
+  box-shadow:inset 0 1px 0 rgba(239,237,235,.05);
+}
+.quad .q-t{
+  font-family:var(--font-display);font-size:25px;color:var(--gold-300);margin:0 0 12px;
+  letter-spacing:.04em;
+}
+.quad ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.quad li{font-size:16px;font-weight:300;line-height:1.38;color:rgba(239,237,235,.88);padding-left:19px;position:relative}
+.quad li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:1px;background:var(--gold-500)}
+
+/* ============================================================
+   Реальные скриншоты и фото
+   ============================================================ */
+.shot{margin:0;display:flex;flex-direction:column;gap:12px;align-items:center}
+.shot img{
+  display:block;max-height:520px;width:auto;border-radius:6px;
+  border:1px solid rgba(239,237,235,.14);
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 70px -30px rgba(184,149,92,.55);
+}
+.shot figcaption{
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(239,237,235,.42);text-align:center;
+}
+.shot .ph{
+  width:290px;height:500px;border:1px dashed rgba(217,198,163,.40);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+  background:rgba(217,198,163,.03);
+  font-size:13px;font-weight:400;line-height:1.5;color:rgba(217,198,163,.62);
+}
+.shot--wide .ph{width:520px;height:320px}
+.shots-row{display:flex;gap:24px;align-items:flex-end;justify-content:center;flex-wrap:wrap}
+
+/* ============================================================
+   Мини-карта «ты здесь»
+   ============================================================ */
+.minimap{position:absolute;left:104px;right:104px;bottom:44px;z-index:5}
+.minimap text{font-family:var(--font-text);font-size:11px;font-weight:600;letter-spacing:.12em;fill:rgba(239,237,235,.38)}
+.minimap .mm-n{font-family:var(--font-display);font-size:13px;letter-spacing:0;fill:rgba(239,237,235,.42)}
+.minimap .mm-n-cur{fill:var(--yu-jet-black)}
+
+/* заголовок на слайдах со схемой во всю ширину не должен съедать кадр */
+.col--map h1{font-size:72px}
+.col--map .eyebrow{margin-bottom:18px}
+
+/* схема и скрин рядом: SVG не должен растягиваться на всю строку и ронять скрин вниз */
+.shots-row{display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:nowrap}
+.shots-row > *{flex:0 0 auto}
+.shots-row .dg{height:auto}
+.shots-row .shot img{height:420px;width:auto;max-height:none}
+
+/* колонка внутри панели: схема сверху, скрин снизу */
+.panel-col{display:flex;flex-direction:column;gap:20px;align-items:center;width:100%}
+.panel-col .dg{max-width:560px}
+.shot--wide img{max-height:250px;width:auto;max-width:100%}
+
+/* ============================================================
+   Игровое поле: шестнадцать клеток и фишка
+   ============================================================ */
+.board{width:100%;height:auto;overflow:visible}
+.board text{font-family:var(--font-text)}
+
+.brd-link{stroke:rgba(217,198,163,.20);stroke-width:1.4;fill:none}
+
+.cell-bg{fill:rgba(239,237,235,.022);stroke:rgba(217,198,163,.20);stroke-width:1}
+.cell--trap .cell-bg{stroke:rgba(122,15,29,.60);fill:rgba(122,15,29,.06)}
+.cell--start .cell-bg,.cell--finish .cell-bg{stroke:rgba(217,198,163,.38)}
+
+.cell-fill{fill:rgba(217,198,163,.13);stroke:var(--gold-300);stroke-width:1.6;
+  opacity:0;animation:cellOn 520ms cubic-bezier(.16,1,.3,1) both}
+.cell-red{fill:rgba(122,15,29,.55);stroke:var(--burgundy-300);stroke-width:2;
+  opacity:0;animation:cellRed 700ms ease-out both}
+@keyframes cellOn{from{opacity:0;transform:scale(.965)}to{opacity:1;transform:scale(1)}}
+@keyframes cellRed{0%{opacity:0}10%{opacity:1}84%{opacity:1}100%{opacity:0}}
+
+.cell-in{opacity:.40}
+.cell-in--on{animation:cellText 520ms ease-out both}
+@keyframes cellText{from{opacity:.40}to{opacity:1}}
+
+.cell-num{font-family:var(--font-display);font-size:19px;fill:var(--gold-500)}
+.cell-tag{font-size:11px;font-weight:600;letter-spacing:.14em;fill:var(--gold-300)}
+.cell-tag--trap{fill:var(--burgundy-300)}
+.cell-t{font-size:15px;font-weight:400;fill:rgba(239,237,235,.90)}
+
+/* фишка */
+.tok,.tok-hop{transform-box:view-box;transform-origin:0 0;
+  animation-timing-function:linear;animation-fill-mode:both}
+.tok-body{fill:var(--gold-300)}
+.tok-glow{fill:rgba(217,198,163,.34);filter:blur(11px)}
+.tok-ghost{transform-box:view-box;transform-origin:0 0;opacity:0;
+  animation:ghostLife 2600ms ease-out both}
+.tok-ghost .tok-body{fill:rgba(196,64,79,.80)}
+@keyframes ghostLife{0%{opacity:0}14%{opacity:.95}82%{opacity:.95}100%{opacity:0}}
+
+.rollback{fill:none;stroke:var(--burgundy-300);stroke-width:2;stroke-dasharray:8 8;
+  opacity:0;animation:ghostLife 2600ms ease-out both}
+@keyframes fadeUp{from{opacity:0}to{opacity:.9}}
+
+/* надписи на ловушке */
+.cap-bad-box,.cap-good-box{opacity:0}
+.cap-bad-box{animation:capFlash 2600ms ease-out both}
+.cap-good-box{animation:fadeUp 520ms ease-out both}
+@keyframes capFlash{0%{opacity:0}8%{opacity:1}84%{opacity:1}100%{opacity:0}}
+.cap-bad-box rect{fill:rgba(18,6,9,.94);stroke:var(--burgundy-300);stroke-width:1}
+.cap-bad-box text{fill:var(--burgundy-300);font-size:21px;font-weight:600;letter-spacing:.16em}
+.cap-good-box rect{fill:rgba(14,12,10,.94);stroke:rgba(217,198,163,.5);stroke-width:1}
+.cap-good-box text{fill:var(--gold-200);font-size:20px;font-weight:400}
+
+/* финиш */
+.fin-pulse{fill:none;stroke:var(--gold-300);stroke-width:2;opacity:0;
+  animation:finPulse 1500ms ease-out both;transform-box:fill-box;transform-origin:center}
+@keyframes finPulse{0%{opacity:0;transform:scale(.6)}25%{opacity:.85}100%{opacity:0;transform:scale(1.5)}}
+.fin-scrim{fill:rgba(8,8,9,.94);opacity:0;animation:fadeUp 600ms ease-out both}
+.fin-card{opacity:0;animation:cardIn 620ms cubic-bezier(.16,1,.3,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.fin-card{transform-box:view-box;transform-origin:0 0}
+.fin-card rect{fill:rgba(217,198,163,.10);stroke:var(--gold-300);stroke-width:1.4}
+.fin-card text{fill:var(--gold-200);font-size:19px;font-weight:600;letter-spacing:.14em}
+.fin-note{fill:rgba(239,237,235,.86);font-size:22px;opacity:0;animation:fadeUp 600ms ease-out both}
+
+/* слайд-доска */
+.slide--board .wrap{padding:0 104px}
+.board-head{
+  font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(239,237,235,.42);margin:0 0 18px;
+}
+.board-head b{color:var(--gold-300);font-weight:600}
+
+/* ============================================================
+   Блок оффера: ценность, цена, бронь
+   ============================================================ */
+.rows{display:flex;flex-direction:column;gap:13px;margin-top:32px;width:100%}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+  padding:15px 24px;border:1px solid var(--line-hairline);border-radius:3px;
+  background:rgba(239,237,235,.02)}
+.row .k{font-size:19px;font-weight:300;color:rgba(239,237,235,.88)}
+.row .v{font-family:var(--font-display);font-size:26px;color:var(--gold-200);white-space:nowrap}
+.row--total{border-color:rgba(217,198,163,.45);background:rgba(217,198,163,.07)}
+.row--total .v{font-size:34px;color:var(--gold-100)}
+.row--old .v{color:rgba(239,237,235,.38);text-decoration:line-through}
+
+.huge{font-family:var(--font-display);font-size:104px;line-height:1;color:var(--gold-200);margin:0}
+.huge-sub{font-size:21px;color:rgba(239,237,235,.72);margin-top:16px;max-width:820px}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:32px;width:100%}
+.card{padding:26px 30px;border:1px solid var(--line-hairline);border-radius:3px;
+  background:linear-gradient(160deg,rgba(217,198,163,.05),transparent 62%)}
+.card--gold{border-color:rgba(217,198,163,.45);
+  background:linear-gradient(160deg,rgba(217,198,163,.12),transparent 62%)}
+.card h3{font-family:var(--font-display);font-size:26px;color:var(--gold-200);margin:0 0 12px;letter-spacing:.03em}
+.card p{font-size:17px;line-height:1.45;color:rgba(239,237,235,.85);margin:0 0 8px}
+.card .val{font-size:12px;color:var(--gold-500);letter-spacing:.14em;text-transform:uppercase;margin-top:14px}
+
+.numlist{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:15px;counter-reset:n}
+.numlist li{display:flex;gap:20px;align-items:flex-start;font-size:20px;font-weight:300;
+  color:rgba(239,237,235,.90);line-height:1.4}
+.numlist li::before{counter-increment:n;content:counter(n);font-family:var(--font-display);
+  font-size:22px;color:var(--gold-300);min-width:32px;line-height:1.3}
+
+.seats{display:flex;gap:60px;margin-top:36px;align-items:flex-end}
+.seat{display:flex;flex-direction:column;gap:8px}
+.seat .n{font-family:var(--font-display);font-size:76px;line-height:1;color:var(--gold-200)}
+.seat .l{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,237,235,.45)}
+.seat--tbd .n{color:rgba(239,237,235,.35)}
+
+.col--map h1.h1--sm{font-size:58px}
+
+/* ============================================================
+   Текстовые слайды эфира
+   ============================================================ */
+.quote-lines{display:flex;flex-direction:column;gap:22px;max-width:1180px}
+.quote-lines p{
+  font-family:var(--font-display);font-size:52px;line-height:1.16;margin:0;
+  color:var(--bone-100);letter-spacing:.01em;
+}
+.quote-lines p:first-child{color:var(--gold-200)!important}
+.quote-lines p.sm{font-family:var(--font-text);font-size:26px;font-weight:300;
+  line-height:1.42;color:rgba(239,237,235,.82)}
+
+.do-q{font-family:var(--font-display);font-size:54px;line-height:1.14;margin:0;
+  color:var(--bone-100);max-width:1160px}
+.do-sub{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.do-sub span{font-size:22px;font-weight:300;color:var(--gold-300);letter-spacing:.02em}
+
+.case-name{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-300);margin:0 0 20px}
+
+.fail-slide .fail-mark{
+  display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--burgundy-300);border:1px solid rgba(122,15,29,.6);border-radius:2px;
+  padding:8px 16px;margin-bottom:30px;
+}
+.fail-slide .quote-lines p{color:rgba(239,237,235,.90)}
+.fail-slide .quote-lines p:first-child{color:rgba(239,237,235,.90)}
+
+.photo-ph{
+  margin-top:36px;width:100%;height:420px;border:1px dashed rgba(217,198,163,.40);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:rgba(217,198,163,.03);padding:32px;
+  font-size:17px;font-weight:300;line-height:1.5;color:rgba(217,198,163,.62);
+}
+
+/* график во всю ширину слайда центрируем */
+.col--map > .px > .dg{margin:0 auto;display:block}
+
+/* подпись с источником под таблицей цифр */
+.src{
+  margin-top:22px;max-width:1000px;font-size:14px;font-weight:300;line-height:1.45;
+  color:rgba(239,237,235,.42);
+}
+/* маркер списка на широких слайдах тоже точкой */
+.col--map .mech li::before{width:5px;height:5px;border-radius:50%;top:12px}
+
+/* карта и коробка во всю ширину слайда */
+.shot--full{margin-top:26px;width:100%}
+.shot--full img{max-height:600px;width:auto;max-width:100%;border-radius:4px}
+
+/* фото за год лентой во всю ширину */
+.shot--strip{margin-top:34px;width:100%}
+.shot--strip img{width:100%;max-height:none;border-radius:4px}
+
+/* кейс: фото до и после слева, слова справа */
+.case-row{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:30px}
+.case-row .shot img{max-height:440px;width:auto;max-width:100%}
+.case-txt{display:flex;flex-direction:column;gap:16px}
+.case-txt p{font-size:20px;font-weight:300;line-height:1.45;color:rgba(239,237,235,.90);margin:0}
+
+/* клипы на слайде */
+.vid-row{display:flex;gap:26px;justify-content:center;align-items:center;margin-top:30px}
+.vid-row .shot video{
+  display:block;max-height:520px;width:auto;border-radius:6px;
+  border:1px solid rgba(239,237,235,.14);
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 70px -30px rgba(184,149,92,.5);
+}
+.vid-row--wide .shot video{max-height:600px}
+
+/* четыре скрина в ряд: подпись под каждым */
+.vid-row .shot img{max-height:470px}
+.vid-row .shot figcaption{max-width:220px}
+
+/* четыре вырезки сеткой два на два: так заголовки читаются */
+.shot-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:26px 34px;margin-top:26px;
+  align-items:center;justify-items:center;
+}
+.shot-grid .shot img{max-height:220px;width:auto;max-width:100%}
+
+/* медиа включается по клику: органы управления видны всегда */
+.vid-row .shot video,.shot-grid .shot video{background:#0B0B0C}
+.vid-row .shot video::-webkit-media-controls-panel{background:rgba(10,10,11,.85)}
+
+/* кружки: телеграмные видеосообщения показываем круглыми */
+.krug-row{display:flex;gap:34px;justify-content:center;align-items:flex-start;margin-top:34px}
+.krug{margin:0;display:flex;flex-direction:column;gap:14px;align-items:center}
+.krug video{
+  width:330px;height:330px;border-radius:50%;object-fit:cover;display:block;
+  border:2px solid rgba(217,198,163,.45);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.95),0 0 60px -25px rgba(184,149,92,.55);
+}
+.krug figcaption{
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(239,237,235,.42);text-align:center;
+}
+
+/* голосовое сообщение */
+.voice-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:34px}
+.voice{margin:0;display:flex;flex-direction:column;gap:14px}
+.voice audio{width:100%;height:54px;filter:invert(.92) hue-rotate(180deg) saturate(.2)}
+.voice figcaption{
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(239,237,235,.42);
+}
+
+/* Плееры должны быть выше невидимых зон перелистывания,
+   иначе клик по кнопке «играть» уходит в «следующий слайд». */
+video.slide-v, audio.slide-a{position:relative;z-index:9}
+
+/* ===== VSL менторства: дополнительные блоки ===== */
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:34px;width:100%}
+.three-col .card{min-height:250px;padding:34px 34px}
+.three-col .card h3{font-size:40px;margin-bottom:18px}
+.three-col .card p{font-size:22px}
+.two-col .card h3{font-size:34px}
+.two-col .card p{font-size:21px}
+.three-col .val{font-size:13px;letter-spacing:.06em;color:rgba(239,237,235,.5);margin-top:14px}
+.tbd{color:#E7B35A!important;font-style:normal;font-weight:500;background:rgba(231,179,90,.10);
+  border:1px dashed rgba(231,179,90,.55);border-radius:4px;padding:0 6px;font-size:.62em;
+  font-family:var(--font-text);letter-spacing:0;vertical-align:middle;white-space:normal}
+.note{margin-top:22px;font-size:20px;font-weight:300;color:rgba(239,237,235,.75)}
+.slide--chat .col--map h1{font-size:44px}
+.slide--chat .col--map .eyebrow{margin-bottom:10px}
+.chat-row{display:flex;gap:26px;justify-content:center;align-items:flex-start;margin-top:22px;width:100%}
+.chat-row .shot img{max-height:610px;max-width:470px;width:auto;height:auto}
+.chat-row.n2 .shot img{max-width:620px}
+.chat-row .shot figcaption{max-width:440px;text-align:center}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:26px;width:100%;align-items:start}
+.grid4 .shot img{max-height:520px;max-width:100%;width:auto}
+.grid4 .ph{width:100%;height:300px;border:1px dashed rgba(231,179,90,.55);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;
+  color:#E7B35A;font-size:16px;background:rgba(231,179,90,.06)}
+.pair{display:flex;gap:40px;justify-content:center;align-items:flex-start;margin-top:26px}
+.pair .shot img{max-height:560px;max-width:620px}
+.pair.n3 .shot img{max-width:440px}
+.bars{margin-top:34px;width:100%;max-width:1180px;display:flex;flex-direction:column;gap:16px}
+.bar{display:grid;grid-template-columns:230px 1fr 140px;gap:22px;align-items:center}
+.bar .k{font-size:21px;font-weight:300;color:rgba(239,237,235,.85)}
+.bar .t{height:30px;background:rgba(239,237,235,.06);border-radius:3px;overflow:hidden}
+.bar .f{height:100%;background:linear-gradient(90deg,rgba(217,198,163,.35),var(--gold-300));
+  border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform 900ms cubic-bezier(.2,.7,.2,1)}
+.bar.shown .f{transform:scaleX(1)}
+.bar .v{font-family:var(--font-display);font-size:34px;color:var(--gold-200);text-align:right}
+.slot{margin-top:40px;max-width:1100px;padding:36px 40px;border:1px dashed rgba(231,179,90,.6);
+  border-radius:6px;background:rgba(231,179,90,.06);color:#E7B35A;font-size:24px;line-height:1.5}
+.ten{display:grid;grid-template-columns:repeat(10,1fr);gap:16px;margin-top:46px;width:100%;max-width:1200px}
+.ten .c{aspect-ratio:1/1.25;border:1.5px solid rgba(217,198,163,.55);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:38px;
+  color:var(--gold-200);background:rgba(217,198,163,.06)}
+.word{margin-top:40px;font-family:var(--font-display);font-size:120px;line-height:1;color:var(--gold-200)}
+.word .tbd{font-size:.5em}
+.voice-shot{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;margin-top:24px}
+.voice-shot .shot img{max-height:600px;width:auto}
+.voice-shot .voice audio{height:64px}
+.voice-shot .case-txt p{font-size:24px}
+.mosaic-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.42;filter:grayscale(.2)}
+.mosaic-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.88),rgba(10,10,11,.55) 60%,rgba(10,10,11,.35))}
+.slide--wall .wall-grid{position:absolute;left:-104px;right:-104px;top:-120px;bottom:-120px;display:grid;
+  grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(3,1fr);gap:6px;opacity:0;transition:opacity 900ms ease}
+.wall-grid.shown{opacity:.55}
+.wall-grid img{width:100%;height:100%;object-fit:cover;display:block;border-radius:3px}
+.wall-txt{position:relative;z-index:2;padding:46px 54px;max-width:1120px;
+  background:linear-gradient(90deg,rgba(10,10,11,.92),rgba(10,10,11,.78) 70%,rgba(10,10,11,0));border-radius:6px}
+.wall-txt h1{font-size:76px}
+.wall-txt .lead{font-size:28px;max-width:900px;color:rgba(239,237,235,.9)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:44px;width:100%}
+.stat{border:1px solid rgba(217,198,163,.35);border-radius:6px;padding:30px 22px;background:rgba(217,198,163,.05);
+  display:flex;flex-direction:column;gap:14px}
+.stat .n{font-family:var(--font-display);font-size:76px;line-height:1;color:var(--gold-200)}
+.stat .l{font-size:20px;line-height:1.35;color:rgba(239,237,235,.85)}
+.bonuses{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:26px;width:100%}
+.bonus{border:1.5px solid rgba(217,198,163,.6);border-radius:8px;padding:36px 38px;
+  background:linear-gradient(160deg,rgba(217,198,163,.16),rgba(217,198,163,.03) 70%)}
+.bonus{display:flex;flex-direction:column;overflow:hidden}
+.bonus .cover{height:300px;margin:-36px -38px 24px;overflow:hidden;background:#0b0b0c}
+.bonus .cover img{height:100%;width:100%;object-fit:cover;display:block}
+.bonus:first-child .cover img{object-position:50% 55%}
+.bonus .tag{align-self:flex-start;display:inline-block;font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-950,#0b0b0c);background:var(--gold-300);padding:6px 12px;border-radius:3px}
+.bonus h3{font-family:var(--font-display);font-size:34px;line-height:1.15;color:var(--gold-100);margin:16px 0 12px}
+.bonus p{font-size:19px;line-height:1.45;color:rgba(239,237,235,.85);margin:0}
+.pair.one .shot img{max-height:640px;max-width:1300px}
+.vid-row .shot video{max-height:600px;max-width:1380px;width:auto;height:auto}
+.vid-row .shot{flex:0 1 auto}
+.vid-row.n2 .shot video,.vid-row.n3 .shot video{max-width:660px}
+.vid-row.n1 .shot video{max-height:560px}
+.rv-row{display:flex;gap:30px;justify-content:center;align-items:center;margin-top:26px;width:100%}
+.rv-row .shot img{max-height:690px;width:auto;height:auto;border-radius:14px;
+  box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(217,198,163,.25)}
+.rv-col{display:flex;flex-direction:column;gap:22px;align-items:center}
+.rv-row .rv-col .shot img{max-width:660px}
+.rv-col.c2 .shot img{width:460px;max-height:none}
+.rv-col.c3 .shot img{width:500px;max-height:none}
+.rv-row.n2 .shot img{max-width:660px}
+.rv-row.n3 .shot img{max-width:440px}
+.rv-row.n4 .shot img{max-width:330px}
+.slide--rv .col--map h1{font-size:54px}
+.slide--rv .mosaic-bg{opacity:.32}
+.bigcase{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;margin-top:24px}
+.bigcase .shot img{max-height:640px;max-width:1000px;width:auto;height:auto;border-radius:8px;
+  box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 0 1.5px rgba(217,198,163,.5)}
+.bigcase .case-txt p{font-size:24px;line-height:1.45}
+.bigcase .case-txt p:first-child{font-family:var(--font-display);font-size:40px;line-height:1.1;color:var(--gold-100)}
+.case-tag{display:inline-block;font-size:15px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:#0b0b0c;background:var(--gold-300);padding:7px 14px;border-radius:3px;margin-bottom:14px}
+.slide--case .col--map h1{font-size:60px}
+.case-row.big{grid-template-columns:1.35fr 1fr}
+.case-row.big .shot img{max-height:620px;border-radius:8px;box-shadow:0 0 0 1.5px rgba(217,198,163,.5)}
+.case-row.big .case-txt p{font-size:24px}
+.past .shot img{max-height:620px;max-width:1000px;width:auto;border-radius:6px}
+.past.case-row{grid-template-columns:auto 1fr;gap:40px}
+.past .case-txt p{font-size:22px}
+.feed{display:flex;gap:18px;justify-content:center;align-items:flex-start;margin-top:24px;width:100%}
+.feed .shot img{max-height:640px;max-width:260px;width:auto;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.stamp{position:absolute;right:110px;bottom:64px;z-index:6;transform:rotate(-5deg);width:max-content;max-width:720px;
+  padding:22px 30px;border:3px solid var(--gold-300);border-radius:10px;background:rgba(10,10,11,.92);
+  font-family:var(--font-display);font-size:34px;line-height:1.12;color:var(--gold-100);text-transform:uppercase;
+  box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.sasha{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:30px;align-items:start}
+.sasha .case-txt p{font-size:24px}
+.sasha .why{border-left:3px solid var(--gold-300);padding-left:30px}
+.sasha .why p{font-size:26px;color:var(--gold-100)}
+.why-line{margin:14px 0 0;font-size:24px;font-weight:300;color:var(--gold-200);max-width:1200px}
+.why-line::before{content:"Потому что ";font-weight:600;color:var(--gold-300)}
+</style>
+</head>
+
+<body>
+
+<div id="viewport">
+<div id="stage">
+
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <filter id="goldglow" x="-70%" y="-70%" width="240%" height="240%">
+        <feGaussianBlur stdDeviation="7" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
+
+
+  <!-- ========================= 01 ========================= -->
+  <section class="slide" id="s1" aria-label="Слайд 1">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Видео для своих</p>
+      <h1 class="title-glow" data-step="1">Это видео попало к тебе<br><span class="gold">не просто так</span></h1>
+      <p class="lead" data-step="2">В этом видео — конкретный способ поменять жизнь на «до» и «после». Его уже прошли мои ученики.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 02 ========================= -->
+  <section class="slide" id="s2" aria-label="Слайд 2">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Конкретный способ</p>
+      <h1 class="title-glow" data-step="1">До и <span class="gold">после</span></h1>
+      <div class="pair n3"><figure class="shot" data-step="2"><img src="assets/photo-do-bassejn.jpg" alt="Тогда" loading="lazy"><figcaption>Тогда</figcaption></figure><figure class="shot" data-step="3"><img src="assets/photo-sejchas-zal.jpg" alt="Сейчас" loading="lazy"><figcaption>Сейчас</figcaption></figure><figure class="shot" data-step="4"><img src="assets/photo-sejchas-rubashka.jpg" alt="Сейчас" loading="lazy"><figcaption>Сейчас</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 03 ========================= -->
+  <section class="slide" id="s3" aria-label="Слайд 3">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Как смотреть это видео</p>
+      <h1 class="title-glow" data-step="1">Не как <span class="gold">серию сериала</span></h1>
+      <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">Возьми блокнот и ручку — будешь записывать. Телефон экраном вниз</li><li data-step="3" style="font-size:24px">Ты привык смотреть видео фоном, между делами. Выдели двадцать пять минут — от начала и до конца</li><li data-step="4" style="font-size:24px">Будешь смотреть хуй пойми как — и жизнь будет хуй пойми как</li><li data-step="5" style="font-size:24px">От того, как ты посмотришь это видео, зависит вся твоя жизнь. И это нихуя не шутка</li></ul>
+    </div></div>
+  </section>
+
+  <!-- ========================= 04 ========================= -->
+  <section class="slide slide--wall" id="s4" aria-label="Слайд 4">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="wall-grid" data-step="1"><img src="assets/private/wall/p013.jpg" alt="" loading="lazy"><img src="assets/private/wall/s002.jpg" alt="" loading="lazy"><img src="assets/private/wall/p021.jpg" alt="" loading="lazy"><img src="assets/private/wall/s003.jpg" alt="" loading="lazy"><img src="assets/private/wall/p023.jpg" alt="" loading="lazy"><img src="assets/private/wall/s004.jpg" alt="" loading="lazy"><img src="assets/private/wall/p027.jpg" alt="" loading="lazy"><img src="assets/private/wall/s005.jpg" alt="" loading="lazy"><img src="assets/private/wall/p028.jpg" alt="" loading="lazy"><img src="assets/private/wall/s006.jpg" alt="" loading="lazy"><img src="assets/private/wall/p029.jpg" alt="" loading="lazy"><img src="assets/private/wall/s007.jpg" alt="" loading="lazy"><img src="assets/private/wall/p030.jpg" alt="" loading="lazy"><img src="assets/private/wall/s008.jpg" alt="" loading="lazy"><img src="assets/private/wall/p031.jpg" alt="" loading="lazy"><img src="assets/private/wall/s009.jpg" alt="" loading="lazy"><img src="assets/private/wall/p032.jpg" alt="" loading="lazy"><img src="assets/private/wall/s010.jpg" alt="" loading="lazy"><img src="assets/private/wall/p041.jpg" alt="" loading="lazy"><img src="assets/private/wall/s011.jpg" alt="" loading="lazy"><img src="assets/private/wall/p042.jpg" alt="" loading="lazy"><img src="assets/private/wall/s012.jpg" alt="" loading="lazy"><img src="assets/private/wall/p045.jpg" alt="" loading="lazy"><img src="assets/private/wall/s014.jpg" alt="" loading="lazy"></div>
+      <div class="wall-txt">      <p class="eyebrow" data-step="2">Смотри моих учеников</p>
+      <h1 class="title-glow" data-step="2">Я кратно повышаю <span class="gold">твои шансы</span></h1>
+      <p class="lead" data-step="3">Это не один человек. Каждое фото и каждый скрин здесь — мой ученик.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 05 ========================= -->
+  <section class="slide slide--rv" id="s5" aria-label="Слайд 5">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Пишут сами · без правок</p>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/36-let.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/10k-2-mes.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 06 ========================= -->
+  <section class="slide" id="s6" aria-label="Слайд 6">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Два варианта</p>
+      <h1 class="title-glow" data-step="1">Выбираешь <span class="gold">ты</span></h1>
+      <div class="two-col"><div class="card" data-step="2"><h3>Выключишь</h3><p>Так же без денег — «кому-то везёт»</p><p>Так же будешь бояться женщин</p><p>Так же будешь сравнивать себя с другими и думать, что ты какой-то не такой</p></div><div class="card" data-step="3"><h3>Досмотришь</h3><p>Найдёшь ответы, которые искал всю жизнь</p><p>Как за год, даже за полгода, кардинально поменять реальность</p><p>Как соблазнять топовых девушек, зарабатывать больше и быть в самом пиздатом окружении</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 07 ========================= -->
+  <section class="slide" id="s7" aria-label="Слайд 7">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Глава 1 · Это видео не попадает к женщинам. Ты мужчина</p>
+      <h1 class="title-glow" data-step="1">Три <span class="gold">столба</span></h1>
+      <div class="three-col"><div class="card" data-step="2"><h3>Реализация</h3><p>«Богатые — плохие», «ошибаться — плохо»</p><p>Боишься денег и своего дела</p></div><div class="card" data-step="3"><h3>Уверенность</h3><p>«Не высовывайся, будь как все»</p><p>Славный парень, который боится сказать «нет»</p></div><div class="card" data-step="4"><h3>Женщины</h3><p>Учили быть удобным мужем, а не желанным</p><p>Френдзона, игнор, тебя используют</p></div></div>
+      <p class="note" data-step="5">Без этих трёх столбов мужчина не полноценный. И тебя всю жизнь готовили, чтобы у тебя их не было.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 08 ========================= -->
+  <section class="slide" id="s8" aria-label="Слайд 8">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Тебя всю жизнь готовили</p><p data-step="2">быть худшим из худших.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 09 ========================= -->
+  <section class="slide" id="s9" aria-label="Слайд 9">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Разве это дало тебе секс? Нет.</p><p data-step="2">Разве это дало тебе счастье? Нет.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 10 ========================= -->
+  <section class="slide" id="s10" aria-label="Слайд 10">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Делаем прямо сейчас</p>
+      <p class="do-q title-glow" data-step="1">Оцени себя по трём столбам<br>от одного до десяти</p>
+      <div class="do-sub"><span data-step="2">Реализация · Уверенность · Женщины</span><span data-step="3">Запиши три цифры — они понадобятся</span></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 11 ========================= -->
+  <section class="slide" id="s11" aria-label="Слайд 11">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Мне было девятнадцать</p>
+      <h1 class="title-glow" data-step="1">Всё, к чему меня готовил мир, — <span class="gold">не то</span></h1>
+      <div class="case-row past"><figure class="shot" data-step="2"><img src="assets/past-19-let.jpg" alt="Тогда" loading="lazy"><figcaption>Тогда</figcaption></figure><div class="case-txt"><p data-step="3">Тридцать квадратов, без штор и без кондиционера</p><p data-step="4">Чтобы заснуть в жару, мочил простыню</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 12 ========================= -->
+  <section class="slide" id="s12" aria-label="Слайд 12">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">А как ты хочешь жить?</p>
+      <h1 class="title-glow" data-step="1">Подумай <span class="gold">честно</span></h1>
+      <figure class="shot shot--strip" data-step="2"><img src="assets/photo-god.jpg" alt="Кадры года"></figure>
+      <ul class="mech" style="margin-top:26px"><li data-step="3" style="font-size:22px">Зарабатывать столько, чтобы хватало на все кайфы</li><li data-step="4" style="font-size:22px">Путешествовать, ни от кого и ни от чего не зависеть</li><li data-step="5" style="font-size:22px">Тонна внимания от женщин — или классная семья</li><li data-step="6" style="font-size:22px">Подарить маме машину</li><li data-step="7" style="font-size:22px">Окружение, где ты свой</li><li data-step="8" style="font-size:22px">Ответил «да» хоть на что-то — ты в нужном месте. Я расскажу то, что не расскажет никто</li></ul>
+    </div></div>
+  </section>
+
+  <!-- ========================= 13 ========================= -->
+  <section class="slide" id="s13" aria-label="Слайд 13">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-1.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Признайся себе:</p><p data-step="2">тебя наебали.</p><p data-step="3">И так больше продолжаться не может.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 14 ========================= -->
+  <section class="slide slide--rv" id="s14" aria-label="Слайд 14">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Отзывы учеников</p>
+      <h1 class="title-glow" data-step="1">За месяц больше, <span class="gold">чем за всю жизнь</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/6-devushek.jpg" alt="Скриншот" loading="lazy"></figure><div class="rv-col c3"><figure class="shot" data-step="3"><img src="assets/private/rv/pyat-raz.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/ded-tvorit.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/krossy.jpg" alt="Скриншот" loading="lazy"></figure></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 15 ========================= -->
+  <section class="slide" id="s15" aria-label="Слайд 15">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Я был по ту сторону</p>
+      <h1 class="title-glow" data-step="1">Та <span class="gold">сторона</span></h1>
+      <div class="case-row past"><figure class="shot" data-step="2"><img src="assets/past-ta-storona.jpg" alt="Тогда" loading="lazy"><figcaption>Тогда</figcaption></figure><div class="case-txt"><p data-step="3">Сто килограммов</p><p data-step="4">Долгов — полтора миллиона</p><p data-step="5">Бизнес потерян</p><p data-step="6">Три года без спорта</p><p data-step="7">Боялся конфликтов, запустил себя</p><p data-step="8">Это не жизнь, а выживание. День сурка. Ты мышь, а не лев</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 16 ========================= -->
+  <section class="slide" id="s16" aria-label="Слайд 16">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Я точно знаю</p>
+      <h1 class="title-glow" data-step="1">Любой парень может прийти<br>из этой точки <span class="gold">в эту</span></h1>
+      <p class="lead" data-step="2">При должном количестве действий. При наставнике рядом. При понимании, что хочешь всё поменять.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 17 ========================= -->
+  <section class="slide" id="s17" aria-label="Слайд 17">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Делаем прямо сейчас</p>
+      <p class="do-q title-glow" data-step="1">Не понимаешь, что хочешь всё поменять?<br>Выпиши пятьдесят причин</p>
+      <div class="do-sub"><span data-step="2">Конкретно, по пунктам</span></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 18 ========================= -->
+  <section class="slide" id="s18" aria-label="Слайд 18">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Лицом в реальность</p>
+      <h1 class="title-glow" data-step="1">Давай <span class="gold">по фактам</span></h1>
+      <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">Девушка, которая тебе нравится, рядом с тобой сейчас даже не села бы</li><li data-step="3" style="font-size:24px">На машину мечты придётся работать пятьдесят лет, живя в съёмной</li><li data-step="4" style="font-size:24px">Окружению, которое ты хочешь, ты сейчас не нужен</li><li data-step="5" style="font-size:24px">Хочешь деньги с бизнеса — а боишься даже подумать о бизнесе</li><li data-step="6" style="font-size:24px">Сколько согласились на первой встрече? Сколько ты зарабатываешь? С кем живёшь?</li></ul>
+    </div></div>
+  </section>
+
+  <!-- ========================= 19 ========================= -->
+  <section class="slide" id="s19" aria-label="Слайд 19">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Я не хочу тебя унизить. Я хочу, чтобы ты признал: ты ничего не знаешь.</p><p data-step="2">Всему миру выгодно, чтобы ты был удобным и послушным.</p><p data-step="3">Таким проще управлять. Таким проще командовать.</p><p data-step="4">Ты этого хочешь?</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 20 ========================= -->
+  <section class="slide" id="s20" aria-label="Слайд 20">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-2.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Сейчас расскажу конкретно,</p><p data-step="2">как ты за один год проживёшь лучше,</p><p data-step="3">чем за все свои двадцать пять–тридцать лет.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 21 ========================= -->
+  <section class="slide" id="s21" aria-label="Слайд 21">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Кто я</p>
+      <h1 class="title-glow" data-step="1">Независимо от того, сколько <span class="gold">ты меня знаешь</span></h1>
+      <div class="case-row"><figure class="shot" data-step="2"><img src="assets/private/getcourse-vyruchka-2026.png" alt="GetCourse · принятые платежи с 1 января 2026" loading="lazy"><figcaption>GetCourse · принятые платежи с 1 января 2026</figcaption></figure><div class="case-txt"><p data-step="3">400 женщин</p><p data-step="4">Более 12 миллионов за год — легально</p><p data-step="5">Более 12 путешествий</p><p data-step="6">Без вредных привычек</p><p data-step="7">Классные отношения, окружение, свободный образ жизни</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 22 ========================= -->
+  <section class="slide" id="s22" aria-label="Слайд 22">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Все, кто рядом, растут</p>
+      <h1 class="title-glow" data-step="1">Кто-то купил <span class="gold">дом</span>, кто-то — машину</h1>
+      <div class="pair n3"><figure class="shot" data-step="2"><img src="assets/case-ibragim.jpg" alt="Дом и отношения" loading="lazy"><figcaption>Дом и отношения</figcaption></figure><figure class="shot" data-step="3"><img src="assets/shot-otzyv-kirill.jpg" alt="Девушки пишут сами" loading="lazy"><figcaption>Девушки пишут сами</figcaption></figure><figure class="shot" data-step="4"><img src="assets/shot-otzyv-artem.jpg" alt="Новая жизнь" loading="lazy"><figcaption>Новая жизнь</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 23 ========================= -->
+  <section class="slide" id="s23" aria-label="Слайд 23">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Хочу тебе представить</p>
+      <h1 class="title-glow" data-step="1">Саня</h1>
+      <div class="sasha"><div class="case-txt"><p data-step="2">Сначала был моим подписчиком</p><p data-step="3">Проходил курсы, потом марафон</p><p data-step="4">В январе 2026-го пишет: «Макс, хочу на менторство. Хочу за год поменять себе жизнь»</p></div><div class="case-txt why"><p data-step="5">Почему я его взял? Набор тогда был очень ограничен</p><p data-step="6">Он показал мне огромные распечатки моих диалогов. Конспекты</p><p data-step="7">Парень конспектировал диалоги, выписывал каждую фишку — и применял</p></div></div>
+    </div><div class="stamp" data-step="8">Когда ты так делаешь, а я рядом — шансы кратно выше</div></div>
+  </section>
+
+  <!-- ========================= 24 ========================= -->
+  <section class="slide" id="s24" aria-label="Слайд 24">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Был подписчиком — стал куратором</p>
+      <h1 class="title-glow" data-step="1">Саша: <span class="gold">миллион за два месяца</span></h1>
+      <div class="vid-row n1"><figure class="shot" data-step="2"><video class="slide-v" src="assets/otzyv-sanya-million.mp4" playsinline preload="none" poster="assets/posters/otzyv-sanya-million.jpg" controls></video><figcaption>«Я за два месяца на миллион продал»</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 25 ========================= -->
+  <section class="slide" id="s25" aria-label="Слайд 25">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-3.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Мой главный продукт</p>
+      <h1 class="title-glow" data-step="1"><span class="gold">Менторство</span></h1>
+      <p class="lead" data-step="2">Если ты будешь на менторстве — ты счастливчик.</p>
+    </div><div class="stamp" data-step="3">Не веришь — смотри мои примеры</div></div>
+  </section>
+
+  <!-- ========================= 26 ========================= -->
+  <section class="slide" id="s26" aria-label="Слайд 26">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Мой продукт — Rolls-Royce</p><p data-step="2">в мире менторинга.</p><p data-step="3">За свой продукт я отвечаю.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 27 ========================= -->
+  <section class="slide slide--rv" id="s27" aria-label="Слайд 27">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Про эфиры</p>
+      <h1 class="title-glow" data-step="1">Посмотрел на жизнь <span class="gold">под другим углом</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/finansy.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/efiry-podacha.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 28 ========================= -->
+  <section class="slide" id="s28" aria-label="Слайд 28">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">1 · Личное крыло</p>
+      <h1 class="title-glow" data-step="1">Вводный <span class="gold">созвон</span></h1>
+      <p class="why-line" data-step="1">тебя готовили к чужой жизни. Свою цель ты ни разу не выбирал</p>
+      <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">Определяем главные для тебя потребности</li><li data-step="3" style="font-size:24px">Кому-то — женщины, кому-то — реализация, кому-то всё сразу</li><li data-step="4" style="font-size:24px">План — из твоего запроса</li><li data-step="5" style="font-size:24px">Если провал в женщинах и в состоянии — начинаем с них</li></ul>
+    </div></div>
+  </section>
+
+  <!-- ========================= 29 ========================= -->
+  <section class="slide slide--chat" id="s29" aria-label="Слайд 29">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">2 · Я на связи 24/7 · личный чат со мной</p>
+      <h1 class="title-glow" data-step="1">Пишешь — <span class="gold">я отвечаю</span></h1>
+      <p class="why-line" data-step="1">сам ты за год, два и три ничего не поменял</p>
+      <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/private/lichno-01.png" alt="Разбор переписки" loading="lazy"><figcaption>Разбор переписки</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/lichno-02.png" alt="«Щас с тремя девками переписываюсь»" loading="lazy"><figcaption>«Щас с тремя девками переписываюсь»</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 30 ========================= -->
+  <section class="slide slide--chat" id="s30" aria-label="Слайд 30">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Послушай, как я отвечаю</p>
+      <h1 class="title-glow" data-step="1">Голосовое <span class="gold">ученику</span></h1>
+      <div class="voice-shot"><figure class="shot" data-step="2"><img src="assets/private/lichno-01.png" alt="Скриншот" loading="lazy"></figure><div><figure class="voice" data-step="2"><audio class="slide-a" src="assets/audio-maksim-uchenik.m4a" preload="metadata" controls></audio><figcaption>Голосовое ученику · 1:12</figcaption></figure><div class="case-txt"><p data-step="3">Поначалу пиши по одному скелету</p><p data-step="4">Задача — набить опыт свиданий</p><p data-step="5">Потом приходят опыт и уверенность</p><p data-step="6">И пропадает страх накосячить</p></div></div></div>
+    </div><div class="stamp" data-step="7">Ошибку видишь в тот же вечер, а не через год</div></div>
+  </section>
+
+  <!-- ========================= 31 ========================= -->
+  <section class="slide slide--rv" id="s31" aria-label="Слайд 31">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">После созвона и встречи со мной</p>
+      <h1 class="title-glow" data-step="1">Вживую — <span class="gold">другие ощущения</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/sozvon-noch.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/vstrecha.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 32 ========================= -->
+  <section class="slide slide--chat" id="s32" aria-label="Слайд 32">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">3 · Чат</p>
+      <h1 class="title-glow" data-step="1">Комьюнити лучших мужчин СНГ, <span class="gold">которые каждый день работают над своими целями</span></h1>
+      <p class="why-line" data-step="1">твоё окружение такое же, как ты, и считает это нормой</p>
+      <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-09.png" alt="Утро в чате" loading="lazy"><figcaption>Утро в чате</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-10.png" alt="«Привет, парни. Жмём»" loading="lazy"><figcaption>«Привет, парни. Жмём»</figcaption></figure><figure class="shot" data-step="4"><img src="assets/shot-chat.jpg" alt="Разбор в группе" loading="lazy"><figcaption>Разбор в группе</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 33 ========================= -->
+  <section class="slide slide--chat" id="s33" aria-label="Слайд 33">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Каждый день парни помогают друг другу</p>
+      <h1 class="title-glow" data-step="1">«Всей оравой <span class="gold">поможем»</span></h1>
+      <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-03.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/chat-04.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-05.png" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 34 ========================= -->
+  <section class="slide slide--chat" id="s34" aria-label="Слайд 34">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Представь: всё максимально хуёво, и высказаться некому</p>
+      <h1 class="title-glow" data-step="1">А рядом двадцать <span class="gold">заряженных парней</span></h1>
+      <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-06.png" alt="«2 недели не курю»" loading="lazy"><figcaption>«2 недели не курю»</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-07.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-08.png" alt="Скриншот" loading="lazy"></figure></div>
+      <p class="note" data-step="5">И я — тот, кто прямо сейчас растёт в деньгах и в девушках. Кто с тобой на одной волне, а не надменный.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 35 ========================= -->
+  <section class="slide slide--chat" id="s35" aria-label="Слайд 35">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Кто на потоке</p>
+      <h1 class="title-glow" data-step="1">Это твой <span class="gold">социальный лифт</span></h1>
+      <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/photo-krug-group.jpg" alt="Встреча группы" loading="lazy"><figcaption>Встреча группы</figcaption></figure><figure class="shot" data-step="3"><img src="assets/private/chat-21.png" alt="Домашка ученика" loading="lazy"><figcaption>Домашка ученика</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 36 ========================= -->
+  <section class="slide" id="s36" aria-label="Слайд 36">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">4 · Вся база сразу</p>
+      <h1 class="title-glow" data-step="1">Открывается <span class="gold">в первый день</span></h1>
+      <p class="why-line" data-step="1">не за десять лет, а за год</p>
+      <div class="stats"><div class="stat" data-step="2"><span class="n">8</span><span class="l">курсов</span></div><div class="stat" data-step="3"><span class="n">200+</span><span class="l">эфиров и видео в архиве менторства</span></div><div class="stat" data-step="4"><span class="n">50+</span><span class="l">разобранных диалогов</span></div><div class="stat" data-step="5"><span class="n">6</span><span class="l">шпаргалок</span></div><div class="stat" data-step="6"><span class="n">4 228</span><span class="l">сообщений: подкасты, разборы, материалы, вопрос-ответ</span></div></div>
+      <p class="note" data-step="7">Тебе не хватит жизни, чтобы всё это изучить. И ты закроешь сферы своей жизни навсегда.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 37 ========================= -->
+  <section class="slide slide--chat" id="s37" aria-label="Слайд 37">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Наполнение · доступно сразу</p>
+      <h1 class="title-glow" data-step="1">Разборы диалогов — <span class="gold">с первого дня</span></h1>
+      <div class="feed"><figure class="shot" data-step="2"><img src="assets/private/razbor-01.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-02.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-03.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-04.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="2"><img src="assets/private/razbor-05.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 38 ========================= -->
+  <section class="slide slide--chat" id="s38" aria-label="Слайд 38">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Что внутри курсов</p>
+      <h1 class="title-glow" data-step="1">Посты, подкасты, <span class="gold">подробнейшие разборы</span></h1>
+      <div class="chat-row n2"><figure class="shot" data-step="2"><img src="assets/private/kurs-01.png" alt="Разделы" loading="lazy"><figcaption>Разделы</figcaption></figure><figure class="shot" data-step="3"><img src="assets/shot-baza.jpg" alt="База менторства" loading="lazy"><figcaption>База менторства</figcaption></figure></div>
+      <p class="note" data-step="4">Все курсы открываются сразу — и мы проходим их вместе. Плюс библиотека менторства и разборы диалогов.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 39 ========================= -->
+  <section class="slide slide--rv" id="s39" aria-label="Слайд 39">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Про эфиры и разборы</p>
+      <h1 class="title-glow" data-step="1">Не «вдохновился и забыл», <span class="gold">а план в голове</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/vynos-mozga.jpg" alt="Скриншот" loading="lazy"></figure><div class="rv-col c2"><figure class="shot" data-step="3"><img src="assets/private/rv/razyob.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/proshche.jpg" alt="Скриншот" loading="lazy"></figure></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 40 ========================= -->
+  <section class="slide slide--chat" id="s40" aria-label="Слайд 40">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Менторство</p>
+      <h1 class="title-glow" data-step="1">Голосовые уроки: <span class="gold">ошибки</span></h1>
+      <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/kurs-04.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/kurs-05.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/kurs-06.png" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 41 ========================= -->
+  <section class="slide" id="s41" aria-label="Слайд 41">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">5 · Порядок работы</p>
+      <h1 class="title-glow" data-step="1">Каждый шаг — <span class="gold">вместе</span></h1>
+      <ol class="numlist"><li data-step="2">Определение цели</li><li data-step="3">Стиль и внешность</li><li data-step="4">Состояние и правильные привычки</li><li data-step="5">Первый кейс</li><li data-step="6">Гормональный фон</li></ol>
+    </div></div>
+  </section>
+
+  <!-- ========================= 42 ========================= -->
+  <section class="slide slide--chat" id="s42" aria-label="Слайд 42">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Домашки</p>
+      <h1 class="title-glow" data-step="1">«Почему я <span class="gold">охуенный»</span></h1>
+      <div class="chat-row n3"><figure class="shot" data-step="2"><img src="assets/private/chat-18.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/chat-19.png" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="4"><img src="assets/private/chat-20.png" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 43 ========================= -->
+  <section class="slide slide--case" id="s43" aria-label="Слайд 43">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <span class="case-tag" data-step="1">Кейс ученика</span>
+      <h1 class="title-glow" data-step="1">Ибрагим</h1>
+      <div class="case-row big"><figure class="shot" data-step="2"><img src="assets/case-ibragim.jpg" alt="Слева до, справа после" loading="lazy"><figcaption>Слева до, справа после</figcaption></figure><div class="case-txt"><p data-step="3">Восемь лет в отношениях, которые его убивали</p><p data-step="4">Два месяца шёл отлично, на третьем решил всё бросить</p><p data-step="5">Улетели в Бодрум, неделя рядом со мной</p><p data-step="6">Новые отношения, дом в Подмосковье</p></div></div>
+    </div><div class="stamp" data-step="7">Хотел бросить.<br>Не получилось</div></div>
+  </section>
+
+  <!-- ========================= 44 ========================= -->
+  <section class="slide" id="s44" aria-label="Слайд 44">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Ибрагим</p>
+      <h1 class="title-glow" data-step="1">Своими <span class="gold">словами</span></h1>
+      <div class="vid-row n2"><figure class="shot" data-step="2"><video class="slide-v" src="assets/vid-ibragim-otzyv.mp4" playsinline preload="none" poster="assets/posters/vid-ibragim-otzyv.jpg" controls></video><figcaption>О своём годе</figcaption></figure><figure class="shot" data-step="3"><video class="slide-v" src="assets/vid-ibragim-2.mp4" playsinline preload="none" poster="assets/posters/vid-ibragim-2.jpg" controls></video><figcaption>После</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 45 ========================= -->
+  <section class="slide slide--case" id="s45" aria-label="Слайд 45">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <span class="case-tag" data-step="1">Кейс ученика</span>
+      <h1 class="title-glow" data-step="1">Гамлет, 22</h1>
+      <div class="bigcase"><figure class="shot" data-step="2"><img src="assets/case-gamlet.jpg" alt="Слева до, справа после" loading="lazy"><figcaption>Слева до, справа после</figcaption></figure><div class="case-txt"><p data-step="3">Сменил стиль — пошли свидания</p><p data-step="4">Пришёл неуверенным: бывшая опрокинула, на свидания полгода толком не ходил</p><p data-step="5">Изменил стиль, закрывает девушек на втором-третьем свидании</p><p data-step="6">Перестал терпеть любую хуйню в свой адрес. Стал больше тратить на себя</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 46 ========================= -->
+  <section class="slide slide--case" id="s46" aria-label="Слайд 46">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <span class="case-tag" data-step="1">Кейс ученика</span>
+      <h1 class="title-glow" data-step="1">Джордан</h1>
+      <div class="bigcase"><figure class="shot" data-step="2"><img src="assets/case-jordan.jpg" alt="Слева до, справа после" loading="lazy"><figcaption>Слева до, справа после</figcaption></figure><div class="case-txt"><p data-step="3">Пришёл с болью, которая накопилась</p><p data-step="4">Седьмой месяц не мог справиться с расставанием</p><p data-step="5">Не умел общаться с девушками, свиданий не было</p><p data-step="6">Сомневался в каждом решении, экономил на себе во всём</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 47 ========================= -->
+  <section class="slide" id="s47" aria-label="Слайд 47">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Кейс</p>
+      <h1 class="title-glow" data-step="1">Максон: минус 12 кг и <span class="gold">годовое менторство</span></h1>
+      <div class="vid-row n1"><figure class="shot" data-step="2"><video class="slide-v" src="assets/otzyv-makson.mp4" playsinline preload="none" poster="assets/posters/otzyv-makson.jpg" controls></video><figcaption>«Я даже не раздумывал, залетел прям сразу»</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 48 ========================= -->
+  <section class="slide" id="s48" aria-label="Слайд 48">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-4.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Сейчас осень — лучшее время для буста.</p><p data-step="2">Женщины и состояние — это энергия.</p><p data-step="3">А энергия — это деньги.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 49 ========================= -->
+  <section class="slide slide--rv" id="s49" aria-label="Слайд 49">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Деньги</p>
+      <h1 class="title-glow" data-step="1">«Не пожалел?» — <span class="gold">«Ни капли»</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/dohod-vyros.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/ni-kapli.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 50 ========================= -->
+  <section class="slide" id="s50" aria-label="Слайд 50">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Кому сюда</p>
+      <h1 class="title-glow" data-step="1">Узнаёшь <span class="gold">себя?</span></h1>
+      <div class="two-col"><div class="card" data-step="2"><h3>Если ты один</h3><p>Не получается знакомиться</p><p>Не знаешь, как переводить общение дальше</p><p>Не знаешь, как построить отношения</p></div><div class="card" data-step="3"><h3>Если ты в отношениях</h3><p>Они делают жизнь хуже, а ты не уходишь</p><p>Потерялся мужской стержень</p></div></div>
+      <p class="note" data-step="4">И там, и там: пропал вкус жизни</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 51 ========================= -->
+  <section class="slide" id="s51" aria-label="Слайд 51">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Кому сюда, а кому нет</p>
+      <h1 class="title-glow" data-step="1">Честно</h1>
+      <div class="two-col"><div class="card" data-step="2"><h3>Тебе сюда</h3><p>Ты постоянно искал человека, который живёт так, как ты хочешь</p><p>Знает чуть больше</p><p>И не будет для тебя начальником</p></div><div class="card" data-step="3"><h3>Тебе не сюда</h3><p>Ищешь волшебную таблетку</p><p>Хочешь, чтобы за тебя всё сделали</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 52 ========================= -->
+  <section class="slide" id="s52" aria-label="Слайд 52">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Зачем это мне?</p><p data-step="2">Я хочу, чтобы ты получил больше, чем заплатил.</p><p class="sm" data-step="3">Мне выгоднее, чтобы ты через год снял подкаст о том, как у тебя всё поменялось.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 53 ========================= -->
+  <section class="slide" id="s53" aria-label="Слайд 53">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Я твой</p>
+      <h1 class="title-glow" data-step="1">Брат и наставник. <span class="gold">На год.</span></h1>
+      <div class="case-row"><figure class="shot" data-step="2"><img src="assets/photo-krug-vmeste.jpg" alt="Группа" loading="lazy"><figcaption>Группа</figcaption></figure><div class="case-txt"><p data-step="3">И после года ты остаёшься в кругу</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 54 ========================= -->
+  <section class="slide slide--rv" id="s54" aria-label="Слайд 54">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Было — стало</p>
+      <h1 class="title-glow" data-step="1">«Ожидания были <span class="gold">намного меньше»</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/shavernev.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/grishin.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 55 ========================= -->
+  <section class="slide" id="s55" aria-label="Слайд 55">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Я знаю, что ты подумаешь</p>
+      <h1 class="title-glow" data-step="1">Возражения</h1>
+      <ul class="mech" style="margin-top:34px;max-width:1180px"><li data-step="2" style="font-size:24px">«Уже покупал курсы, не помогло» — там с тебя никто не спрашивал. Здесь я на связи каждый день</li><li data-step="3" style="font-size:24px">«Нет времени, работаю» — отчёт занимает пять минут вечером</li><li data-step="4" style="font-size:24px">«Мне поздно» — Роману сорок пять</li><li data-step="5" style="font-size:24px">«Мне рано» — Гамлету двадцать два, Тимуру двадцать три</li></ul>
+    </div><div class="stamp" data-step="6">«У меня не получится» — не получится просто не может</div></div>
+  </section>
+
+  <!-- ========================= 56 ========================= -->
+  <section class="slide" id="s56" aria-label="Слайд 56">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-5.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Я сам учился в долг.</p><p data-step="2">С красной кредитной историей.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 57 ========================= -->
+  <section class="slide" id="s57" aria-label="Слайд 57">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-6.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Каждый отсроченный месяц и год</p><p data-step="2">отдаляет тебя от жизни, которую ты хочешь.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 58 ========================= -->
+  <section class="slide slide--rv" id="s58" aria-label="Слайд 58">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Это работает</p>
+      <h1 class="title-glow" data-step="1">«Мою жизнь <span class="gold">точно изменил»</span></h1>
+      <div class="rv-row n2"><figure class="shot" data-step="2"><img src="assets/private/rv/rustam-1.jpg" alt="Скриншот" loading="lazy"></figure><figure class="shot" data-step="3"><img src="assets/private/rv/rustam-2.jpg" alt="Скриншот" loading="lazy"></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 59 ========================= -->
+  <section class="slide slide--chat" id="s59" aria-label="Слайд 59">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Беру не всех · мне важно окружение, случайных людей нет</p>
+      <h1 class="title-glow" data-step="1">113 <span class="gold">заявок</span> на менторство</h1>
+      <div class="pair one"><figure class="shot" data-step="2"><img src="assets/private/getcourse-zayavki.png" alt="GetCourse · заказы «Менторство» · 01.10.2026" loading="lazy"><figcaption>GetCourse · заказы «Менторство» · 01.10.2026</figcaption></figure></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 60 ========================= -->
+  <section class="slide" id="s60" aria-label="Слайд 60">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">113 заявок прямо сейчас · для тех, кто досмотрел</p>
+      <h1 class="title-glow" data-step="1">Десять <span class="gold">мест</span></h1>
+      <div class="ten"><div class="c" data-step="2">1</div><div class="c" data-step="2">2</div><div class="c" data-step="2">3</div><div class="c" data-step="2">4</div><div class="c" data-step="2">5</div><div class="c" data-step="2">6</div><div class="c" data-step="2">7</div><div class="c" data-step="2">8</div><div class="c" data-step="2">9</div><div class="c" data-step="2">10</div></div>
+      <p class="note" data-step="3">Я лично работаю с каждым. Больше — не вывезу.</p>
+    </div></div>
+  </section>
+
+  <!-- ========================= 61 ========================= -->
+  <section class="slide" id="s61" aria-label="Слайд 61">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">За заполненную анкету</p>
+      <h1 class="title-glow" data-step="1">Два <span class="gold">бонуса</span></h1>
+      <div class="bonuses"><div class="bonus" data-step="2"><div class="cover"><img src="assets/bonus-srednehorosho.jpg" alt="«Как перестать жить среднехорошо»"></div><span class="tag">Бонус 1 · видео</span><h3>«Как перестать жить среднехорошо»</h3><p>Про состояние, когда вроде всё нормально: работа есть, деньги какие-то есть, женщина какая-то есть. И именно поэтому годами ничего не меняется</p></div><div class="bonus" data-step="3"><div class="cover"><img src="assets/bonus-vlog.jpg" alt="Менторство изнутри"></div><span class="tag">Бонус 2 · влог</span><h3>Менторство изнутри</h3><p>Инсайты и ученики. Почувствуешь атмосферу, зарядишься результатами — и тебе будет проще принять решение</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 62 ========================= -->
+  <section class="slide" id="s62" aria-label="Слайд 62">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Что сделать</p>
+      <h1 class="title-glow" data-step="1">Звонок бесплатный. <span class="gold">Беру не всех</span></h1>
+      <ol class="numlist"><li data-step="2">Заполняешь анкету</li><li data-step="3">Сразу получаешь два бонуса</li><li data-step="4">С тобой связывается Саня, наставник проекта: бесплатная консультация. Он сам был на твоём месте</li><li data-step="5">Тех, кого отберём, зову на звонок лично со мной</li></ol>
+    </div></div>
+  </section>
+
+  <!-- ========================= 63 ========================= -->
+  <section class="slide slide--wall" id="s63" aria-label="Слайд 63">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="wall-grid" data-step="1"><img src="assets/private/wall/p168.jpg" alt="" loading="lazy"><img src="assets/private/wall/s117.jpg" alt="" loading="lazy"><img src="assets/private/wall/p169.jpg" alt="" loading="lazy"><img src="assets/private/wall/s118.jpg" alt="" loading="lazy"><img src="assets/private/wall/p170.jpg" alt="" loading="lazy"><img src="assets/private/wall/s119.jpg" alt="" loading="lazy"><img src="assets/private/wall/p171.jpg" alt="" loading="lazy"><img src="assets/private/wall/s120.jpg" alt="" loading="lazy"><img src="assets/private/wall/p172.jpg" alt="" loading="lazy"><img src="assets/private/wall/s121.jpg" alt="" loading="lazy"><img src="assets/private/wall/p173.jpg" alt="" loading="lazy"><img src="assets/private/wall/s122.jpg" alt="" loading="lazy"><img src="assets/private/wall/p174.jpg" alt="" loading="lazy"><img src="assets/private/wall/s123.jpg" alt="" loading="lazy"><img src="assets/private/wall/p175.jpg" alt="" loading="lazy"><img src="assets/private/wall/s124.jpg" alt="" loading="lazy"><img src="assets/private/wall/p176.jpg" alt="" loading="lazy"><img src="assets/private/wall/s125.jpg" alt="" loading="lazy"><img src="assets/private/wall/p177.jpg" alt="" loading="lazy"><img src="assets/private/wall/s126.jpg" alt="" loading="lazy"><img src="assets/private/wall/p178.jpg" alt="" loading="lazy"><img src="assets/private/wall/s127.jpg" alt="" loading="lazy"><img src="assets/private/wall/p179.jpg" alt="" loading="lazy"><img src="assets/private/wall/s128.jpg" alt="" loading="lazy"></div>
+      <div class="wall-txt">      <p class="eyebrow" data-step="2">Ты следующий</p>
+      <h1 class="title-glow" data-step="2">Не получится — <span class="gold">просто не может</span></h1>
+      <p class="lead" data-step="3">Все они начинали с анкеты.</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 64 ========================= -->
+  <section class="slide" id="s64" aria-label="Слайд 64">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Допустим, ты забил.</p><p data-step="2">Что в твоей жизни поменялось</p><p data-step="3">за год, за два, за три?</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 65 ========================= -->
+  <section class="slide" id="s65" aria-label="Слайд 65">
+    
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <div class="quote-lines"><p data-step="1">Какое должно произойти чудо,</p><p data-step="2">чтобы ты начал зарабатывать больше?</p><p data-step="3">Чтобы у тебя появились женщины?</p></div>
+    </div></div>
+  </section>
+
+  <!-- ========================= 66 ========================= -->
+  <section class="slide" id="s66" aria-label="Слайд 66">
+    <div class="mosaic-bg" style="background-image:url(assets/private/mosaic-7.jpg)"></div>
+    <div class="glow px" style="--d:0.22"></div>
+    <div class="wrap"><div class="col col--map px" style="--d:0.9">
+      <p class="eyebrow" data-step="1">Тебе крупно повезло</p>
+      <h1 class="title-glow" data-step="1">Заполняй <span class="gold">анкету</span></h1>
+      <p class="lead" data-step="2">Ссылка на анкету — под этим видео.</p>
+    </div></div>
+  </section>
+
+
+  <!-- ========================= хром ========================= -->
+  <button class="tap tap--prev chrome" id="tapPrev" aria-label="Назад"></button>
+  <button class="tap tap--next chrome" id="tapNext" aria-label="Дальше"></button>
+
+  <div class="chrome wordmark">Yulov University</div>
+  <div class="chrome counter" id="counter"><b>01</b> / 10</div>
+  <nav class="chrome rail" id="rail" aria-label="Навигация по слайдам"></nav>
+  <div class="chrome hint" id="hint"><kbd>→</kbd> дальше <kbd>←</kbd> назад <kbd>↓</kbd> показать всё <kbd>H</kbd> убрать интерфейс</div>
+
+</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var stage   = document.getElementById('stage');
+  var slides  = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var railEl  = document.getElementById('rail');
+  var counter = document.getElementById('counter');
+  var hint    = document.getElementById('hint');
+
+  /* ---- масштаб сцены 1600x900 под любой экран ---- */
+  function fit(){
+    var k = Math.min(window.innerWidth/1600, window.innerHeight/900);
+    var x = (window.innerWidth  - 1600*k)/2;
+    var y = (window.innerHeight -  900*k)/2;
+    stage.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + k + ')';
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  fit();
+
+  /* ---- шаги внутри слайда ---- */
+  var steps = slides.map(function(sl){
+    var max = 1;
+    Array.prototype.forEach.call(sl.querySelectorAll('[data-step]'), function(el){
+      var n = parseInt(el.getAttribute('data-step'), 10) || 1;
+      if (n > max) max = n;
+    });
+    return max;
+  });
+
+  /* ---- режим рендера видео: ?render=1&slide=N ---- */
+  var q = new URLSearchParams(location.search);
+  if (q.has('render')){
+    var only = Math.max(1, Math.min(slides.length, parseInt(q.get('slide') || '1', 10) || 1));
+    var hold = parseFloat(q.get('hold') || '2.4') * 1000;
+    document.body.classList.add('render');
+    slides.forEach(function(sl, idx){
+      if (idx === only-1){ sl.classList.add('is-active'); }
+      else { sl.style.display = 'none'; }
+    });
+    var cur = slides[only-1];
+    Array.prototype.forEach.call(cur.querySelectorAll('[data-step]'), function(el){
+      el.style.setProperty('--step', el.getAttribute('data-step'));
+    });
+    /* длительность = разгон + все шаги + последнее появление + пауза в конце */
+    window.__videos = Array.prototype.slice.call(cur.querySelectorAll('video'));
+    window.__videos.forEach(function(v){ v.pause(); v.muted = true; v.currentTime = 0; });
+    window.__video = window.__videos[0] || null;
+    /* доска играет по своему таймлайну — он объявлен на слайде */
+    var own = parseInt(cur.getAttribute('data-duration') || '0', 10);
+    window.__duration = own ? own + hold : 350 + (steps[only-1] - 1) * 900 + 900 + hold;
+    /* петля: слайд уже раскрыт, длина кадра равна длине фонового клипа */
+    if (q.has('loop')){
+      var loopSec = parseFloat(q.get('dur') || '10');
+      document.body.classList.add('loop');
+      document.documentElement.style.setProperty('--loop-dur', loopSec + 's');
+      window.__duration = loopSec * 1000;
+      window.__loop = true;
+    }
+    window.__slide = only;
+    window.__slides = slides.length;
+    window.__ready = true;
+    return;
+  }
+
+  var i = 0, s = 1;
+
+  /* ---- медиа на слайде: включается по клику, а не само ----
+     На эфире важно, чтобы ролик не начинал говорить, пока Максим говорит сам. */
+  function syncVideos(){
+    slides.forEach(function(sl, idx){
+      Array.prototype.forEach.call(sl.querySelectorAll('video.slide-v, audio.slide-a'), function(m){
+        m.pause();
+        if (idx !== i) m.currentTime = 0;
+      });
+    });
+  }
+
+  /* ---- аналитика: dataLayer, если он есть ---- */
+  function track(name, params){
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({event:name}, params || {}));
+  }
+
+  /* ---- лента слайдов ---- */
+  slides.forEach(function(sl, idx){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Слайд ' + (idx+1));
+    b.addEventListener('click', function(e){ e.stopPropagation(); go(idx, 1); });
+    railEl.appendChild(b);
+  });
+  var railBtns = Array.prototype.slice.call(railEl.children);
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function render(){
+    slides.forEach(function(sl, idx){
+      var on = idx === i;
+      sl.classList.toggle('is-active', on);
+      var v = sl.querySelector('video');
+      if (v){ if (on){ var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } else { v.pause(); v.currentTime = 0; } }
+      Array.prototype.forEach.call(sl.querySelectorAll('[data-step]'), function(el){
+        var n = parseInt(el.getAttribute('data-step'), 10) || 1;
+        el.classList.toggle('shown', on && n <= s);
+      });
+    });
+    railBtns.forEach(function(b, idx){
+      b.classList.toggle('cur',  idx === i);
+      b.classList.toggle('done', idx <  i);
+    });
+    counter.innerHTML = '<b>' + pad(i+1) + '</b> / ' + pad(slides.length);
+    hint.style.opacity = (i === 0 && s <= 2) ? '' : '0';
+    if (history.replaceState) history.replaceState(null, '', '#' + (i+1));
+  }
+
+  function go(idx, step){
+    idx = Math.max(0, Math.min(slides.length-1, idx));
+    var changed = idx !== i;
+    i = idx;
+    s = Math.max(1, Math.min(steps[i], step || 1));
+    render();
+    if (changed) syncVideos();
+    if (changed || step === 1) track('slide_view', {slide_index: i+1, slide_id: slides[i].id});
+    if (i === slides.length-1 && s === steps[i]) track('deck_complete', {slides: slides.length});
+  }
+
+  function next(){
+    if (s < steps[i]) { s++; render(); track('slide_step', {slide_index:i+1, step:s}); }
+    else if (i < slides.length-1) { go(i+1, 1); }
+  }
+  function prev(){
+    if (s > 1) { s--; render(); }
+    else if (i > 0) { go(i-1, steps[i-1]); }
+  }
+  function revealAll(){ s = steps[i]; render(); }
+
+  /* ---- клавиатура ---- */
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'ArrowRight' || k === ' ' || k === 'PageDown' || k === 'Enter'){ e.preventDefault(); next(); }
+    else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace'){ e.preventDefault(); prev(); }
+    else if (k === 'ArrowDown'){ e.preventDefault(); revealAll(); }
+    else if (k === 'ArrowUp'){ e.preventDefault(); s = 1; render(); }
+    else if (k === 'Home'){ e.preventDefault(); go(0, 1); }
+    else if (k === 'End'){ e.preventDefault(); go(slides.length-1, steps[slides.length-1]); }
+    else if (k === 'h' || k === 'H' || k === 'р' || k === 'Р'){ document.body.classList.toggle('no-chrome'); }
+    else if (k === 'f' || k === 'F' || k === 'а' || k === 'А'){
+      if (!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+      else { document.exitFullscreen && document.exitFullscreen(); }
+    }
+    else if (/^[0-9]$/.test(k)){ e.preventDefault(); go((k === '0' ? 10 : parseInt(k,10)) - 1, 1); }
+  });
+
+  /* ---- мышь и палец ---- */
+  /* Листаем по клику где угодно, кроме плееров и кнопок:
+     иначе нажатие на «играть» уходило в «следующий слайд». */
+  document.addEventListener('click', function(e){
+    if (e.target.closest('video, audio, button, a, input, label, .krug, .voice')) return;
+    (e.clientX / window.innerWidth < 0.22 ? prev : next)();
+  });
+
+  var tx = 0, ty = 0;
+  document.addEventListener('touchstart', function(e){
+    tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)){ dx < 0 ? next() : prev(); }
+  }, {passive:true});
+
+  /* ---- старт: слайд из хэша ---- */
+  var fromHash = parseInt((location.hash || '').replace('#',''), 10);
+  go(isNaN(fromHash) ? 0 : fromHash - 1, 1);
+
+})();
+</script>
+
+<script>
+/* Видео на слайдах: грузим только открытый слайд. Простой сервер (.command) не тянет
+   десяток роликов разом и обрывает ответы — браузер видит «битый формат» и чёрный экран. */
+(function(){
+  /* картинки: простой сервер иногда обрывает ответ — пробуем ещё раз */
+  Array.prototype.forEach.call(document.images, function(im){
+    var tries = 0;
+    im.addEventListener('error', function(){
+      if (tries++ < 3) setTimeout(function(){ im.src = im.getAttribute('src').split('?')[0] + '?r=' + tries; }, 400 * tries);
+    });
+  });
+  function prime(sl){
+    Array.prototype.forEach.call(sl.querySelectorAll('video, audio'), function(m){
+      if (m.error || m.readyState === 0){ m.preload = 'metadata'; m.load(); }
+    });
+  }
+  var obs = new MutationObserver(function(list){
+    list.forEach(function(r){ if (r.target.classList.contains('is-active')) prime(r.target); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.slide'), function(sl){
+    obs.observe(sl, {attributes:true, attributeFilter:['class']});
+    if (sl.classList.contains('is-active')) prime(sl);
+  });
+})();
+</script>
+</body>
+</html>
